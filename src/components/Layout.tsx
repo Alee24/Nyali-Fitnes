@@ -69,12 +69,6 @@ export function Navbar() {
                   )} />
                 </Link>
               ))}
-              <Link
-                to="/login"
-                className="bg-white text-brand-black hover:bg-brand-accent hover:text-white px-6 py-2 rounded-sm font-heading font-bold uppercase tracking-wider transition-all duration-300 transform hover:-translate-y-1"
-              >
-                Member Login
-              </Link>
             </div>
           </div>
 
@@ -113,13 +107,6 @@ export function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              <Link
-                to="/login"
-                onClick={() => setIsOpen(false)}
-                className="w-full text-center block bg-brand-accent text-brand-black px-3 py-4 mt-6 font-heading font-bold uppercase tracking-wider"
-              >
-                Member Login
-              </Link>
             </div>
           </motion.div>
         )}
@@ -175,8 +162,11 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-600">
-          &copy; {new Date().getFullYear()} Nyali CrossFit Gym. All rights reserved.
+        <div className="mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-600 flex flex-col md:flex-row justify-between items-center">
+          <span>&copy; {new Date().getFullYear()} Nyali CrossFit Gym. All rights reserved.</span>
+          <span className="mt-2 md:mt-0">
+            Developed by <a href="https://www.kkdes.co.ke" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">KKDES</a>
+          </span>
         </div>
       </div>
     </footer>
