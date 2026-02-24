@@ -6,12 +6,11 @@ import { PRICING_DATA } from '@/lib/supabase';
 import { ScrollReveal } from '@/components/Animations';
 
 export default function Pricing() {
-  const [activeCategory, setActiveCategory] = useState<'individual' | 'spinning' | 'teen' | 'corporate'>('individual');
+  const [activeCategory, setActiveCategory] = useState<'individual' | 'spinning' | 'corporate'>('individual');
 
   const categories = [
     { id: 'individual', name: 'Individual', icon: Dumbbell },
     { id: 'spinning', name: 'Spinning', icon: Bike },
-    { id: 'teen', name: 'Teens', icon: Users },
     { id: 'corporate', name: 'Corporate', icon: Briefcase },
   ] as const;
 
@@ -106,7 +105,7 @@ export default function Pricing() {
               </div>
             )}
 
-            {(activeCategory === 'spinning' || activeCategory === 'teen') && (
+            {activeCategory === 'spinning' && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {PRICING_DATA[activeCategory].plans.map((plan, idx) => (
                   <motion.div 
@@ -128,38 +127,55 @@ export default function Pricing() {
             )}
 
             {activeCategory === 'corporate' && (
-              <div className="bg-brand-charcoal border border-white/10 overflow-hidden">
-                <div className="grid grid-cols-3 bg-black/40 p-6 border-b border-white/5 text-sm uppercase tracking-wider font-bold text-gray-500">
-                  <div>{PRICING_DATA.corporate.headers[0]}</div>
-                  <div className="text-center">{PRICING_DATA.corporate.headers[1]}</div>
-                  <div className="text-center">{PRICING_DATA.corporate.headers[2]}</div>
-                </div>
-                <div className="divide-y divide-white/5">
-                  {PRICING_DATA.corporate.plans.map((plan, idx) => (
-                    <motion.div 
-                      key={idx} 
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.05 }}
-                      className="grid grid-cols-3 p-6 items-center hover:bg-white/5 transition-colors"
-                    >
-                      <div className="font-heading text-2xl text-white flex items-center">
-                        {plan.duration}
-                        {plan.highlight && (
-                          <span className="ml-3 text-[10px] bg-brand-accent text-brand-black px-2 py-0.5 rounded font-bold uppercase tracking-wider">
-                            {plan.highlight}
-                          </span>
-                        )}
+              <div className="space-y-8">
+                <div className="bg-brand-charcoal border border-white/10 p-8 rounded-xl">
+                  <h3 className="text-2xl font-heading text-white mb-6">Inquire via WhatsApp</h3>
+                  <form 
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const formData = new FormData(e.currentTarget);
+                      const data = Object.fromEntries(formData);
+                      const message = `*Corporate Membership Inquiry*\n\n` +
+                        `*Company:* ${data.company}\n` +
+                        `*Contact Person:* ${data.name}\n` +
+                        `*Email:* ${data.email}\n` +
+                        `*Phone:* ${data.phone}\n` +
+                        `*Employees:* ${data.employees}\n\n` +
+                        `Hello, I would like to inquire about corporate membership options.`;
+                      
+                      const url = `https://wa.me/254743040404?text=${encodeURIComponent(message)}`;
+                      window.open(url, '_blank');
+                    }}
+                    className="space-y-4"
+                  >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-400 mb-1">Company Name</label>
+                        <input required name="company" type="text" className="w-full bg-black/40 border border-white/10 rounded px-4 py-2 text-white focus:border-brand-accent focus:outline-none" />
                       </div>
-                      <div className="text-center text-gray-300 font-medium text-lg">{plan.tier1}</div>
-                      <div className="text-center text-white font-bold text-xl">{plan.tier2}</div>
-                    </motion.div>
-                  ))}
-                </div>
-                <div className="p-6 bg-brand-accent/5 text-center border-t border-white/5">
-                  <p className="text-gray-400 text-sm">
-                    Corporate rates apply to groups from the same organization. Contact us for custom invoicing.
-                  </p>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-400 mb-1">Contact Person</label>
+                        <input required name="name" type="text" className="w-full bg-black/40 border border-white/10 rounded px-4 py-2 text-white focus:border-brand-accent focus:outline-none" />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-gray-400 mb-1">Email Address</label>
+                        <input required name="email" type="email" className="w-full bg-black/40 border border-white/10 rounded px-4 py-2 text-white focus:border-brand-accent focus:outline-none" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-gray-400 mb-1">Phone Number</label>
+                        <input required name="phone" type="tel" className="w-full bg-black/40 border border-white/10 rounded px-4 py-2 text-white focus:border-brand-accent focus:outline-none" />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-400 mb-1">Number of Employees (Approx.)</label>
+                      <input required name="employees" type="number" className="w-full bg-black/40 border border-white/10 rounded px-4 py-2 text-white focus:border-brand-accent focus:outline-none" />
+                    </div>
+                    <Button type="submit" className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white border-none">
+                      Send Inquiry via WhatsApp
+                    </Button>
+                  </form>
                 </div>
               </div>
             )}

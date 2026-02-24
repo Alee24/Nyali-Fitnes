@@ -49,7 +49,7 @@ export const PRICING_DATA = {
       { duration: "Monthly", basic: "KSh 11,000", premium: "KSh 12,999" },
       { duration: "Quarterly", basic: "KSh 30,000", premium: "KSh 33,000" },
       { duration: "6 Months", basic: "KSh 55,000", premium: "KSh 59,000" },
-      { duration: "Annual", basic: "KSh 90,000", premium: "KSh 99,000", highlight: "Best Value" },
+      { duration: "Annual", basic: "KSh 99,000", premium: "KSh 117,000", highlight: "Best Value" },
     ]
   },
   spinning: {
@@ -62,18 +62,6 @@ export const PRICING_DATA = {
       { duration: "Quarterly", price: "KSh 18,900" },
       { duration: "6 Months", price: "KSh 35,000" },
       { duration: "Annual", price: "KSh 56,700" },
-    ]
-  },
-  teen: {
-    title: "Teen Membership",
-    description: "Gym, CrossFit Teens & Sauna.",
-    plans: [
-      { duration: "Daily", price: "KSh 800" },
-      { duration: "Weekly", price: "KSh 4,000" },
-      { duration: "Monthly", price: "KSh 8,000" },
-      { duration: "Quarterly", price: "KSh 21,600" },
-      { duration: "6 Months", price: "KSh 39,000" },
-      { duration: "Annual", price: "KSh 64,800" },
     ]
   },
   corporate: {

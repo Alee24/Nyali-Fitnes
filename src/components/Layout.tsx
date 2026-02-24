@@ -24,10 +24,9 @@ export function Navbar() {
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'CrossFit', path: '/crossfit' },
-    { name: 'Schedule', path: '/schedule' },
-    { name: 'Coaches', path: '/coaches' },
-    { name: 'Pricing', path: '/pricing' },
+    { name: 'Classes', path: '/schedule' },
+    { name: 'Membership', path: '/pricing' },
+    { name: 'Community', path: '/community' },
     { name: 'Contact', path: '/contact' },
   ];
 

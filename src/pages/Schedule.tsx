@@ -15,20 +15,34 @@ export default function Schedule() {
   const [bookingLoading, setBookingLoading] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // Generate next 7 days for the tabs
+  // Generate days for the current week (Mon-Sun)
   const days = Array.from({ length: 7 }, (_, i) => {
-    const date = new Date();
-    date.setDate(date.getDate() + i);
+    const d = new Date();
+    const currentDay = d.getDay(); // 0-6
+    const distanceToMonday = currentDay === 0 ? -6 : 1 - currentDay;
+    d.setDate(d.getDate() + distanceToMonday + i);
+    
+    // Use local YYYY-MM-DD
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const dateString = `${year}-${month}-${day}`;
+
     return {
-      label: date.toLocaleDateString('en-US', { weekday: 'long' }),
-      dateString: date.toISOString().split('T')[0], // YYYY-MM-DD
-      displayDate: date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+      label: d.toLocaleDateString('en-US', { weekday: 'long' }),
+      dateString: dateString,
     };
   });
 
   useEffect(() => {
     // Set initial active day to today
-    setActiveDay(days[0].dateString);
+    const d = new Date();
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    const today = `${year}-${month}-${day}`;
+    
+    setActiveDay(today);
     
     // Check auth
     supabase.auth.getUser().then(({ data: { user } }) => {
@@ -154,7 +168,6 @@ export default function Schedule() {
                   : 'bg-brand-charcoal text-gray-400 border-white/5 hover:text-white hover:border-white/20'
               }`}
             >
-              <span className="block text-xs opacity-70 mb-1">{day.displayDate}</span>
               <span className="text-lg">{day.label}</span>
             </button>
           ))}

@@ -12,15 +12,21 @@ export default function Home() {
     <div className="flex flex-col min-h-screen bg-brand-black overflow-hidden">
       {/* Hero Section */}
       <section className="relative h-[calc(100vh-80px)] flex items-center justify-center overflow-hidden">
-        {/* Parallax Background */}
-        <motion.div style={{ y: y1 }} className="absolute inset-0 z-0">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-brand-black z-10" />
-          <img 
-            src="https://images.unsplash.com/photo-1574680096141-1cddd32e04ca?q=80&w=2070&auto=format&fit=crop" 
-            alt="African Athlete CrossFit" 
-            className="w-full h-full object-cover object-top scale-110"
-          />
-        </motion.div>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover scale-110"
+            poster="https://images.unsplash.com/photo-1574680096141-1cddd32e04ca?q=80&w=2070&auto=format&fit=crop"
+          >
+            <source src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Video-2026-02-23-at-12.06.50.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-12">
           <motion.div

@@ -41,26 +41,40 @@ export default function Contact() {
             </div>
           </div>
 
-          <form className="space-y-6">
+          <form 
+            onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.currentTarget);
+              const data = Object.fromEntries(formData);
+              const message = `*Website Contact Form*\n\n` +
+                `*Name:* ${data.firstName} ${data.lastName}\n` +
+                `*Email:* ${data.email}\n` +
+                `*Message:* ${data.message}`;
+              
+              const url = `https://wa.me/254743040404?text=${encodeURIComponent(message)}`;
+              window.open(url, '_blank');
+            }}
+            className="space-y-6"
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2">First Name</label>
-                <input type="text" className="w-full bg-brand-charcoal border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="John" />
+                <input required name="firstName" type="text" className="w-full bg-brand-charcoal border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="John" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-400 mb-2">Last Name</label>
-                <input type="text" className="w-full bg-brand-charcoal border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="Doe" />
+                <input required name="lastName" type="text" className="w-full bg-brand-charcoal border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="Doe" />
               </div>
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-400 mb-2">Email</label>
-              <input type="email" className="w-full bg-brand-charcoal border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="john@example.com" />
+              <input required name="email" type="email" className="w-full bg-brand-charcoal border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="john@example.com" />
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-400 mb-2">Message</label>
-              <textarea rows={4} className="w-full bg-brand-charcoal border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="Tell us about your fitness goals..." />
+              <textarea required name="message" rows={4} className="w-full bg-brand-charcoal border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="Tell us about your fitness goals..." />
             </div>
-            <Button size="lg" className="w-full">Send Message</Button>
+            <Button type="submit" size="lg" className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white border-none">Send Message via WhatsApp</Button>
           </form>
         </div>
 

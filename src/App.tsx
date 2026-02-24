@@ -13,6 +13,10 @@ import Dashboard from '@/pages/Dashboard';
 import Admin from '@/pages/Admin';
 import CrossFit from '@/pages/CrossFit';
 
+import { WhatsAppButton } from '@/components/WhatsAppButton';
+
+import Community from '@/pages/Community';
+
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -38,6 +42,7 @@ export default function App() {
           <Route path="/crossfit" element={<CrossFit />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/coaches" element={<Coaches />} />
+          <Route path="/community" element={<Community />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/classes" element={<Schedule />} />
           <Route path="/contact" element={<Contact />} />
@@ -46,6 +51,7 @@ export default function App() {
           <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
+      {!isAppRoute && <WhatsAppButton />}
       {!isAppRoute && <Footer />}
     </div>
   );
