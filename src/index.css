@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-black: #0B0B0B;
+  --color-brand-charcoal: #121212;
+  --color-brand-accent: #FF4D2D; /* Orange Accent */
+  --color-brand-accent-hover: #E03E20;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-black text-white font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading uppercase tracking-wide;
+  }
+}
