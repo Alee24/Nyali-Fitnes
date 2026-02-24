@@ -41,11 +41,13 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="bg-brand-accent p-1 rounded transform group-hover:rotate-12 transition-transform duration-300">
-              <Dumbbell className="h-6 w-6 text-brand-black" />
-            </div>
-            <span className="font-heading text-2xl font-bold tracking-wider text-white">
-              NYALI <span className="text-brand-accent">CROSSFIT</span>
+            <img 
+              src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg" 
+              alt="Nyali Crossfit & Gym Logo" 
+              className="h-12 w-auto object-contain" 
+            />
+            <span className="font-heading text-2xl font-bold tracking-wider text-white hidden sm:block">
+              NYALI <span className="text-brand-accent">CROSSFIT & GYM</span>
             </span>
           </Link>
 
@@ -121,9 +123,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <Dumbbell className="h-6 w-6 text-brand-accent" />
+              <img 
+                src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg" 
+                alt="Nyali Crossfit & Gym Logo" 
+                className="h-12 w-auto object-contain" 
+              />
               <span className="font-heading text-xl font-bold tracking-wider text-white">
-                NYALI <span className="text-brand-accent">CROSSFIT</span>
+                NYALI <span className="text-brand-accent">CROSSFIT & GYM</span>
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -162,7 +168,7 @@ export function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-600 flex flex-col md:flex-row justify-between items-center">
-          <span>&copy; {new Date().getFullYear()} Nyali CrossFit Gym. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Nyali Crossfit & Gym. All rights reserved.</span>
           <span className="mt-2 md:mt-0">
             Developed by <a href="https://www.kkdes.co.ke" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">KKDES</a>
           </span>

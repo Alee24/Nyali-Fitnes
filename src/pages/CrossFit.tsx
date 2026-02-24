@@ -48,7 +48,7 @@ export default function CrossFit() {
               CrossFit is a strength and conditioning program built around constantly varied, functional movements performed at safe, effective intensity.
             </p>
             <p className="text-4xl font-heading text-white mb-16">
-              At Nyali CrossFit Gym, classes are coach-guided and beginner friendly.
+              At Nyali Crossfit & Gym, classes are coach-guided and beginner friendly.
             </p>
           </ScrollReveal>
           
@@ -105,7 +105,7 @@ export default function CrossFit() {
             <ScrollReveal>
               <h2 className="text-6xl font-heading text-white mb-8">Who It’s For</h2>
               <p className="text-gray-400 mb-10 text-xl font-light leading-relaxed">
-                CrossFit at Nyali CrossFit Gym is ideal for anyone willing to put in the work. No experience required. Our coaches teach every movement.
+                CrossFit at Nyali Crossfit & Gym is ideal for anyone willing to put in the work. No experience required. Our coaches teach every movement.
               </p>
               <ul className="space-y-4">
                 {[

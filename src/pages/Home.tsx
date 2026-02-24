@@ -48,7 +48,7 @@ export default function Home() {
 
           <ScrollReveal delay={0.4}>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light tracking-wide leading-relaxed">
-              Join the tribe at Nyali CrossFit. Expert coaching, supportive community, and results-driven training for all fitness levels.
+              Join the tribe at Nyali Crossfit & Gym. Expert coaching, supportive community, and results-driven training for all fitness levels.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link to="/contact">
@@ -80,21 +80,6 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
-
-      {/* Marquee Section */}
-      <div className="bg-brand-accent py-4 overflow-hidden whitespace-nowrap relative z-20 -rotate-1 scale-105 origin-left border-y-4 border-black">
-        <motion.div 
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="flex items-center gap-12 text-brand-black font-heading text-4xl font-bold tracking-widest uppercase"
-        >
-          {[...Array(10)].map((_, i) => (
-            <span key={i} className="flex items-center">
-              NYALI CROSSFIT <span className="mx-6 text-white">•</span> FORGE ELITE FITNESS <span className="mx-6 text-white">•</span>
-            </span>
-          ))}
-        </motion.div>
-      </div>
 
       {/* Stats Section */}
       <section className="py-20 bg-brand-black relative z-10">
@@ -277,7 +262,7 @@ export default function Home() {
               {
                 name: "Sarah M.",
                 role: "Competitive Athlete",
-                quote: "Nyali CrossFit took my training to the next level. The programming is intelligent, challenging, and scalable. I've hit PRs I never thought possible.",
+                quote: "Nyali Crossfit & Gym took my training to the next level. The programming is intelligent, challenging, and scalable. I've hit PRs I never thought possible.",
                 image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1000&auto=format&fit=crop"
               },
               {

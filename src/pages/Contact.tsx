@@ -5,8 +5,12 @@ export default function Contact() {
   return (
     <div className="pt-20 min-h-screen bg-brand-black">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-80px)]">
-        {/* Contact Info & Form */}
         <div className="p-8 md:p-16 lg:p-24 flex flex-col justify-center">
+          <img 
+            src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg" 
+            alt="Nyali Crossfit & Gym Logo" 
+            className="h-24 w-auto object-contain mb-8" 
+          />
           <h1 className="text-5xl font-heading font-bold text-white mb-8">Get In Touch</h1>
           
           <div className="space-y-8 mb-12">

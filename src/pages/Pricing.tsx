@@ -72,55 +72,67 @@ export default function Pricing() {
             </div>
 
             {activeCategory === 'individual' && (
-              <div className="bg-brand-charcoal border border-white/10 overflow-hidden">
-                <div className="grid grid-cols-3 bg-black/40 p-6 border-b border-white/5 text-sm uppercase tracking-wider font-bold text-gray-500">
-                  <div>Duration</div>
-                  <div className="text-center">Basic</div>
-                  <div className="text-center text-brand-accent">Premium</div>
-                </div>
-                <div className="divide-y divide-white/5">
-                  {PRICING_DATA.individual.plans.map((plan, idx) => (
-                    <motion.div 
-                      key={idx} 
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.05 }}
-                      className="grid grid-cols-3 p-6 items-center hover:bg-white/5 transition-colors group relative"
-                    >
-                      <div className="font-heading text-2xl text-white flex items-center">
-                        {plan.duration}
-                        {plan.highlight && (
-                          <span className="ml-3 text-[10px] bg-brand-accent text-brand-black px-2 py-0.5 rounded font-bold uppercase tracking-wider animate-pulse">
-                            {plan.highlight}
-                          </span>
-                        )}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {PRICING_DATA.individual.plans.map((plan, idx) => (
+                  <motion.div 
+                    key={idx} 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.05 }}
+                    className="bg-brand-black border-4 border-white p-8 flex flex-col items-center text-center relative group hover:bg-white hover:text-brand-black transition-colors duration-300 min-h-[500px]"
+                  >
+                    <div className="flex-grow flex flex-col items-center justify-center w-full">
+                      <h3 className="text-4xl md:text-5xl font-heading font-black uppercase tracking-tighter mb-6">{plan.duration}</h3>
+                      
+                      <p className="text-lg font-sans font-bold uppercase tracking-widest mb-2">Starting From</p>
+                      <div className="text-5xl md:text-6xl font-sans font-black tracking-tight mb-6">
+                        {plan.basic}
                       </div>
-                      <div className="text-center text-gray-300 font-medium text-lg">{plan.basic}</div>
-                      <div className="text-center text-white font-bold text-xl group-hover:text-brand-accent transition-colors scale-110">
-                        {plan.premium || <span className="text-gray-600 text-sm font-normal">-</span>}
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
+
+                      {plan.premium && (
+                        <div className="mb-8 py-1 px-3 border border-current rounded-full text-xs font-sans font-bold uppercase tracking-widest">
+                          Premium: {plan.premium}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="w-full space-y-4 mt-auto">
+                      <Button className="w-full rounded-none border-2 border-current bg-current text-brand-black hover:bg-transparent hover:text-current font-bold uppercase tracking-widest py-6 text-lg transition-all">
+                        Book Now
+                      </Button>
+                      <Button variant="outline" className="w-full rounded-none border-2 border-current bg-transparent text-current hover:bg-current hover:text-brand-black font-bold uppercase tracking-widest py-6 text-lg transition-all">
+                        Day Pass
+                      </Button>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             )}
 
             {activeCategory === 'spinning' && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {PRICING_DATA[activeCategory].plans.map((plan, idx) => (
                   <motion.div 
                     key={idx}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: idx * 0.1 }}
-                    className="bg-brand-charcoal p-8 border border-white/10 hover:border-brand-accent transition-all hover:-translate-y-2 group relative overflow-hidden"
+                    className="bg-brand-black border-4 border-white p-8 flex flex-col items-center text-center relative group hover:bg-white hover:text-brand-black transition-colors duration-300 min-h-[500px]"
                   >
-                    <div className="absolute top-0 right-0 w-16 h-16 bg-brand-accent/10 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-150" />
-                    <h3 className="text-gray-500 text-sm uppercase tracking-widest mb-2 font-bold">{plan.duration}</h3>
-                    <div className="text-5xl font-heading text-white mb-8 group-hover:text-brand-accent transition-colors">
-                      {plan.price}
+                    <div className="flex-grow flex flex-col items-center justify-center w-full">
+                      <h3 className="text-4xl md:text-5xl font-heading font-black uppercase tracking-tighter mb-6">{plan.duration}</h3>
+                      
+                      <p className="text-lg font-sans font-bold uppercase tracking-widest mb-2">Price</p>
+                      <div className="text-5xl md:text-6xl font-sans font-black tracking-tight mb-8">
+                        {plan.price}
+                      </div>
                     </div>
-                    <Button variant="outline" className="w-full border-white/20 hover:border-brand-accent hover:bg-brand-accent hover:text-brand-black">Select Plan</Button>
+
+                    <div className="w-full space-y-4 mt-auto">
+                      <Button className="w-full rounded-none border-2 border-current bg-current text-brand-black hover:bg-transparent hover:text-current font-bold uppercase tracking-widest py-6 text-lg transition-all">
+                        Select Plan
+                      </Button>
+                    </div>
                   </motion.div>
                 ))}
               </div>
