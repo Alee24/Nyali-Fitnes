@@ -47,7 +47,7 @@ export function Navbar() {
               className="h-12 w-auto object-contain"
             />
             <span className="font-heading text-2xl font-bold tracking-wider text-white hidden sm:block">
-              NYALI <span className="text-brand-accent">CROSSFIT & GYM</span>
+              NYALI <span className="text-brand-accent">CROSSFIT GYM</span>
             </span>
           </Link>
 
@@ -129,7 +129,7 @@ export function Footer() {
                 className="h-12 w-auto object-contain"
               />
               <span className="font-heading text-xl font-bold tracking-wider text-white">
-                NYALI <span className="text-brand-accent">CROSSFIT & GYM</span>
+                NYALI <span className="text-brand-accent">CROSSFIT GYM</span>
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
@@ -172,7 +172,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-600 flex flex-col items-center gap-2">
-          <span>&copy; {new Date().getFullYear()} Nyali Crossfit & Gym. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} Nyali Crossfit Gym. All rights reserved.</span>
           <span>
             Developed by | <a href="https://kkdes.co.ke/" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">KKDES</a>
           </span>
