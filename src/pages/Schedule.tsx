@@ -1,247 +1,475 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { Button } from '@/components/Button';
-import { Calendar as CalendarIcon, Clock, User, AlertCircle, Check } from 'lucide-react';
-import { supabase } from '@/lib/supabase';
-import { ScheduleWithDetails } from '@/lib/types';
+import { Clock, User, MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { ScrollReveal } from '@/components/Animations';
+import { BookingModal } from '@/components/BookingModal';
+
+// Weekly Schedule Template (repeats year-round)
+// 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+const WEEKLY_TEMPLATE: { [key: number]: any[] } = {
+  // Monday
+  1: [
+    {
+      id: 'mon-1',
+      title: 'NCG // Engine',
+      start_time: '06:00',
+      duration_minutes: 45,
+      coach: 'Gym Instructor',
+      location: 'Group Training Area',
+      intensity: 'High'
+    },
+    {
+      id: 'mon-2',
+      title: 'HYROX TECHNIQUE',
+      start_time: '13:30',
+      duration_minutes: 35,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'Medium'
+    },
+    {
+      id: 'mon-3',
+      title: 'HYROX INTRO',
+      start_time: '18:00',
+      duration_minutes: 15,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'Low'
+    },
+    {
+      id: 'mon-4',
+      title: 'NCG X HERA',
+      start_time: '18:15',
+      duration_minutes: 60,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'High'
+    },
+    {
+      id: 'mon-5',
+      title: 'NCG // Powerlift',
+      start_time: '19:30',
+      duration_minutes: 45,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'High'
+    }
+  ],
+  // Tuesday
+  2: [
+    {
+      id: 'tue-1',
+      title: 'HYROX // Strength',
+      start_time: '06:00',
+      duration_minutes: 60,
+      coach: 'Gym Instructor',
+      location: 'Group Training Area',
+      intensity: 'High'
+    },
+    {
+      id: 'tue-2',
+      title: 'HYROX TECHNIQUE',
+      start_time: '12:00',
+      duration_minutes: 35,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'Medium'
+    },
+    {
+      id: 'tue-3',
+      title: 'HYROX TECHNIQUE',
+      start_time: '17:00',
+      duration_minutes: 30,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'Medium'
+    },
+    {
+      id: 'tue-4',
+      title: 'Bulletproof',
+      start_time: '18:45',
+      duration_minutes: 45,
+      coach: 'Gym Instructor',
+      location: 'PT Mezzanine',
+      intensity: 'High'
+    }
+  ],
+  // Wednesday
+  3: [
+    {
+      id: 'wed-1',
+      title: 'HYROX',
+      start_time: '06:00',
+      duration_minutes: 60,
+      coach: 'Gym Instructor',
+      location: 'Group Training Area',
+      intensity: 'High'
+    },
+    {
+      id: 'wed-2',
+      title: 'HYROX // BLAST',
+      start_time: '13:00',
+      duration_minutes: 30,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'High'
+    },
+    {
+      id: 'wed-3',
+      title: 'Induction - Functional',
+      start_time: '17:00',
+      duration_minutes: 30,
+      coach: 'Gym Instructor',
+      location: 'Functional Area',
+      intensity: 'Low'
+    },
+    {
+      id: 'wed-4',
+      title: 'HYROX INTRO',
+      start_time: '18:00',
+      duration_minutes: 15,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'Low'
+    },
+    {
+      id: 'wed-5',
+      title: 'HYROX // INTERVALS',
+      start_time: '18:15',
+      duration_minutes: 60,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'High'
+    }
+  ],
+  // Thursday
+  4: [
+    {
+      id: 'thu-1',
+      title: 'NCG // Engine',
+      start_time: '06:00',
+      duration_minutes: 45,
+      coach: 'Gym Instructor',
+      location: 'Group Training Area',
+      intensity: 'High'
+    },
+    {
+      id: 'thu-2',
+      title: 'HYROX // BLAST',
+      start_time: '12:30',
+      duration_minutes: 30,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'High'
+    },
+    {
+      id: 'thu-3',
+      title: 'HYROX // Strength',
+      start_time: '18:15',
+      duration_minutes: 45,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'High'
+    }
+  ],
+  // Friday
+  5: [
+    {
+      id: 'fri-1',
+      title: 'HYROX // INTERVALS',
+      start_time: '06:00',
+      duration_minutes: 45,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'High'
+    },
+    {
+      id: 'fri-2',
+      title: 'HYROX // Strength',
+      start_time: '12:30',
+      duration_minutes: 45,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'High'
+    },
+    {
+      id: 'fri-3',
+      title: 'NCG // Powerlift',
+      start_time: '18:30',
+      duration_minutes: 60,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'High'
+    }
+  ],
+  // Saturday
+  6: [
+    {
+      id: 'sat-1',
+      title: 'NCG // TEAM SEND',
+      start_time: '08:15',
+      duration_minutes: 45,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'High'
+    },
+    {
+      id: 'sat-2',
+      title: 'Pull-up Master class',
+      start_time: '08:45',
+      duration_minutes: 75,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'Medium'
+    },
+    {
+      id: 'sat-3',
+      title: 'Open Gym',
+      start_time: '10:00',
+      duration_minutes: 120,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'Low'
+    }
+  ],
+  // Sunday
+  0: [
+    {
+      id: 'sun-1',
+      title: 'Open Gym',
+      start_time: '09:00',
+      duration_minutes: 180,
+      coach: 'Gym Instructor',
+      location: 'Gym Floor',
+      intensity: 'Low'
+    },
+    {
+      id: 'sun-2',
+      title: 'Yoga & Mobility',
+      start_time: '10:00',
+      duration_minutes: 60,
+      coach: 'Gym Instructor',
+      location: 'Studio',
+      intensity: 'Low'
+    }
+  ]
+};
 
 export default function Schedule() {
-  const [activeDay, setActiveDay] = useState<string>('');
-  const [schedules, setSchedules] = useState<ScheduleWithDetails[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<any>(null);
-  const [bookingLoading, setBookingLoading] = useState<string | null>(null);
+  const [currentWeekStart, setCurrentWeekStart] = useState<Date>(new Date());
+  const [weeklySchedules, setWeeklySchedules] = useState<{ [key: string]: any[] }>({});
+  const [selectedClass, setSelectedClass] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Generate days for the current week (Mon-Sun)
-  const days = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date();
-    const currentDay = d.getDay(); // 0-6
-    const distanceToMonday = currentDay === 0 ? -6 : 1 - currentDay;
-    d.setDate(d.getDate() + distanceToMonday + i);
-    
-    // Use local YYYY-MM-DD
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    const dateString = `${year}-${month}-${day}`;
-
-    return {
-      label: d.toLocaleDateString('en-US', { weekday: 'long' }),
-      dateString: dateString,
-    };
-  });
+  // Helper to get Monday of the current week
+  const getMonday = (d: Date) => {
+    const date = new Date(d);
+    const day = date.getDay();
+    const diff = date.getDate() - day + (day === 0 ? -6 : 1); // adjust when day is sunday
+    return new Date(date.setDate(diff));
+  };
 
   useEffect(() => {
-    // Set initial active day to today
-    const d = new Date();
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    const today = `${year}-${month}-${day}`;
-    
-    setActiveDay(today);
-    
-    // Check auth
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      setUser(user);
-    });
+    // Initialize to this week's Monday
+    setCurrentWeekStart(getMonday(new Date()));
   }, []);
 
   useEffect(() => {
-    if (activeDay) {
-      fetchSchedule(activeDay);
-    }
-  }, [activeDay, user]); // Re-fetch when day changes or user logs in (to update booked status)
-
-  const fetchSchedule = async (dateStr: string) => {
-    setLoading(true);
-    try {
-      // 1. Get schedules for the day
-      const startOfDay = `${dateStr}T00:00:00`;
-      const endOfDay = `${dateStr}T23:59:59`;
-
-      const { data, error } = await supabase
-        .from('schedule')
-        .select(`
-          id, start_time, end_time, capacity,
-          classes (title, duration_minutes, intensity),
-          coaches (name)
-        `)
-        .gte('start_time', startOfDay)
-        .lte('start_time', endOfDay)
-        .order('start_time');
-
-      if (error) throw error;
-
-      // 2. Get booking counts and user status for these schedules
-      const enrichedData = await Promise.all(data.map(async (item: any) => {
-        // Get booking count
-        const { count } = await supabase
-          .from('bookings')
-          .select('*', { count: 'exact', head: true })
-          .eq('schedule_id', item.id)
-          .eq('status', 'confirmed');
-
-        // Check if current user booked
-        let userBooked = false;
-        if (user) {
-          const { data: booking } = await supabase
-            .from('bookings')
-            .select('id')
-            .eq('schedule_id', item.id)
-            .eq('user_id', user.id)
-            .eq('status', 'confirmed')
-            .single();
-          userBooked = !!booking;
-        }
-
+    // Generate schedule for the selected week based on the template
+    const grouped: { [key: string]: any[] } = {};
+    
+    // Iterate through 7 days starting from currentWeekStart (Monday)
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(currentWeekStart);
+      d.setDate(currentWeekStart.getDate() + i);
+      const dateKey = d.toISOString().split('T')[0];
+      const dayIndex = d.getDay(); // 0-6
+      
+      // Get template classes for this day index
+      const templateClasses = WEEKLY_TEMPLATE[dayIndex] || [];
+      
+      // Map template classes to specific date/time for this week
+      grouped[dateKey] = templateClasses.map(template => {
+        // Construct full ISO string for start_time
+        const startDateTime = `${dateKey}T${template.start_time}:00`;
+        
         return {
-          ...item,
-          booking_count: count || 0,
-          user_booked: userBooked
+          ...template,
+          start_time: startDateTime,
+          // We don't strictly need end_time for display, but could calculate it if needed
         };
-      }));
-
-      setSchedules(enrichedData);
-    } catch (error) {
-      console.error('Error fetching schedule:', error);
-    } finally {
-      setLoading(false);
+      });
     }
+
+    setWeeklySchedules(grouped);
+  }, [currentWeekStart]);
+
+  const handleWeekChange = (direction: 'prev' | 'next') => {
+    const newStart = new Date(currentWeekStart);
+    newStart.setDate(currentWeekStart.getDate() + (direction === 'next' ? 7 : -7));
+    setCurrentWeekStart(newStart);
   };
 
-  const handleBook = async (scheduleId: string) => {
-    if (!user) {
-      navigate('/login');
-      return;
+  const formatTime = (dateStr: string) => {
+    return new Date(dateStr).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+  };
+
+  const formatDuration = (minutes: number) => {
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    if (hours > 0) {
+      return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
     }
+    return `00:${mins.toString().padStart(2, '0')}`;
+  };
 
-    setBookingLoading(scheduleId);
-    try {
-      // Call the Postgres function we defined in schema
-      const { data, error } = await supabase.rpc('book_class', {
-        p_schedule_id: scheduleId,
-        p_user_id: user.id
-      });
+  // Generate days array for rendering headers
+  const weekDays = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(currentWeekStart);
+    d.setDate(currentWeekStart.getDate() + i);
+    return {
+      date: d,
+      dateString: d.toISOString().split('T')[0],
+      dayName: d.toLocaleDateString('en-US', { weekday: 'short' }),
+      dayNumber: d.getDate(),
+      month: d.toLocaleDateString('en-US', { month: 'short' })
+    };
+  });
 
-      if (error) throw error;
+  const getClassColor = (title: string) => {
+    const t = title.toLowerCase();
+    if (t.includes('hyrox')) return 'bg-orange-500';
+    if (t.includes('ncg') || t.includes('strength')) return 'bg-yellow-500';
+    if (t.includes('cardio') || t.includes('sweat')) return 'bg-blue-500';
+    if (t.includes('yoga') || t.includes('mobility')) return 'bg-green-500';
+    if (t.includes('bulletproof')) return 'bg-gray-500';
+    if (t.includes('induction')) return 'bg-cyan-400';
+    if (t.includes('pull-up')) return 'bg-purple-600';
+    if (t.includes('powerlift')) return 'bg-green-500';
+    return 'bg-brand-accent';
+  };
 
-      if (data.success) {
-        // Refresh data to show updated status
-        fetchSchedule(activeDay);
-        alert('Class booked successfully!');
-      } else {
-        alert(data.message);
-      }
-    } catch (error: any) {
-      console.error('Booking error:', error);
-      alert('Failed to book class. Please try again.');
-    } finally {
-      setBookingLoading(null);
-    }
+  const handleClassClick = (session: any) => {
+    const date = new Date(session.start_time).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    const time = formatTime(session.start_time);
+    const duration = `${session.duration_minutes} min`;
+    
+    setSelectedClass({
+      title: session.title,
+      subtitle: `${date} at ${time} (${duration})`,
+      description: `Coach: ${session.coach}`,
+      type: 'Class'
+    });
+    setIsModalOpen(true);
   };
 
   return (
     <div className="pt-20 min-h-screen bg-brand-black">
-      <div className="bg-brand-charcoal py-20 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-6xl font-heading font-normal text-white mb-6 tracking-wide">Class Schedule</h1>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
-            Book your spot in our daily WODs, specialty classes, or open gym sessions.
-          </p>
+      <BookingModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        bookingDetails={selectedClass} 
+      />
+
+      <div className="bg-brand-charcoal py-12 border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-heading font-normal text-white mb-2 tracking-wide">Class Schedule</h1>
+              <p className="text-gray-400 font-light">
+                Book your spot in our daily WODs and specialty classes.
+              </p>
+            </div>
+            
+            <div className="flex items-center gap-4 bg-brand-black p-2 rounded-lg border border-white/10">
+              <button 
+                onClick={() => handleWeekChange('prev')}
+                className="p-2 hover:bg-white/10 rounded-md text-white transition-colors"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <span className="text-white font-heading tracking-widest min-w-[140px] text-center">
+                {weekDays[0]?.month} {weekDays[0]?.dayNumber} - {weekDays[6]?.month} {weekDays[6]?.dayNumber}
+              </span>
+              <button 
+                onClick={() => handleWeekChange('next')}
+                className="p-2 hover:bg-white/10 rounded-md text-white transition-colors"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Day Selector */}
-        <div className="flex overflow-x-auto pb-4 mb-12 gap-2 no-scrollbar">
-          {days.map((day) => (
-            <button
-              key={day.dateString}
-              onClick={() => setActiveDay(day.dateString)}
-              className={`flex-shrink-0 px-6 py-4 rounded-lg font-heading font-bold uppercase tracking-wider text-sm transition-all border ${
-                activeDay === day.dateString 
-                  ? 'bg-brand-accent text-brand-black border-brand-accent transform scale-105' 
-                  : 'bg-brand-charcoal text-gray-400 border-white/5 hover:text-white hover:border-white/20'
-              }`}
-            >
-              <span className="text-lg">{day.label}</span>
-            </button>
-          ))}
-        </div>
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="overflow-x-auto pb-4 custom-scrollbar">
+          <div className="min-w-[1000px] grid grid-cols-7 gap-4">
+            {/* Day Columns */}
+            {weekDays.map((day) => (
+              <div key={day.dateString} className="flex flex-col gap-4">
+                {/* Header */}
+                <div className="text-center py-4 bg-brand-charcoal border-b-2 border-brand-accent/50 rounded-t-lg">
+                  <div className="text-brand-accent font-bold uppercase text-sm tracking-wider">{day.dayName}</div>
+                  <div className="text-white font-heading text-2xl">{day.dayNumber} {day.month}</div>
+                </div>
 
-        {/* Schedule List */}
-        <div className="space-y-4 min-h-[400px]">
-          {loading ? (
-            <div className="text-center py-20 text-gray-500 animate-pulse">Loading schedule...</div>
-          ) : schedules.length === 0 ? (
-            <div className="text-center py-20 bg-brand-charcoal rounded-xl border border-white/5">
-              <AlertCircle className="h-12 w-12 text-gray-600 mx-auto mb-4" />
-              <h3 className="text-xl text-white font-heading mb-2">No Classes Scheduled</h3>
-              <p className="text-gray-500">Check back later or try another day.</p>
-            </div>
-          ) : (
-            schedules.map((session, index) => {
-              const startTime = new Date(session.start_time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-              const isFull = (session.booking_count || 0) >= session.capacity;
-              
-              return (
-                <ScrollReveal key={session.id} delay={index * 0.05} width="100%">
-                  <div className="bg-brand-charcoal border border-white/5 rounded-xl p-6 flex flex-col md:flex-row items-center justify-between hover:border-brand-accent/30 transition-colors group relative overflow-hidden">
-                    {/* Left: Time & Info */}
-                    <div className="flex flex-col md:flex-row items-center gap-8 w-full md:w-auto mb-6 md:mb-0">
-                      <div className="flex flex-col items-center justify-center w-28 h-28 bg-brand-black rounded-lg border border-white/10 group-hover:border-brand-accent/50 transition-colors shrink-0">
-                        <Clock className="h-6 w-6 text-brand-accent mb-2" />
-                        <span className="text-white font-heading text-2xl tracking-wide">{startTime}</span>
-                        <span className="text-xs text-gray-500 font-bold uppercase">{session.classes.duration_minutes} min</span>
-                      </div>
-                      
-                      <div className="text-center md:text-left">
-                        <h3 className="text-2xl font-heading text-white mb-2 tracking-wide">{session.classes.title}</h3>
-                        <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-gray-400">
-                          <span className="flex items-center"><User className="h-4 w-4 mr-2 text-brand-accent" /> {session.coaches?.name || 'Staff'}</span>
-                          <span className={`px-2 py-0.5 rounded text-xs font-bold uppercase border ${
-                            session.classes.intensity === 'High' ? 'border-red-500/30 text-red-400 bg-red-500/10' : 
-                            session.classes.intensity === 'Medium' ? 'border-yellow-500/30 text-yellow-400 bg-yellow-500/10' : 
-                            'border-blue-500/30 text-blue-400 bg-blue-500/10'
-                          }`}>
-                            {session.classes.intensity} Intensity
-                          </span>
-                          <span className="text-xs">
-                            {session.booking_count} / {session.capacity} Spots
-                          </span>
+                {/* Classes */}
+                <div className="flex flex-col gap-3">
+                  {weeklySchedules[day.dateString]?.length === 0 ? (
+                    <div className="p-4 text-center text-gray-600 text-sm italic bg-brand-charcoal/30 rounded-lg border border-white/5">
+                      No classes
+                    </div>
+                  ) : (
+                    weeklySchedules[day.dateString]?.map((session) => (
+                      <motion.div
+                        key={session.id}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="group relative bg-white text-brand-black p-3 rounded-lg border-l-4 border-brand-accent hover:translate-y-[-2px] transition-all duration-200 shadow-lg cursor-pointer"
+                        style={{ borderLeftColor: getClassColor(session.title).replace('bg-', 'var(--color-') }}
+                        onClick={() => handleClassClick(session)}
+                      >
+                        <div className={`absolute top-3 right-3 w-3 h-3 rounded-full ${getClassColor(session.title)}`} />
+                        
+                        <div className="flex justify-between items-end mb-2 border-b border-gray-200 pb-2">
+                          <span className="font-bold text-lg leading-none">{formatTime(session.start_time)}</span>
+                          <span className="text-xs font-mono text-gray-500">{formatDuration(session.duration_minutes)}</span>
                         </div>
-                      </div>
-                    </div>
+                        
+                        <h3 className="font-heading font-bold text-lg leading-tight mb-1 uppercase tracking-tight">
+                          {session.title}
+                        </h3>
+                        
+                        <div className="space-y-1">
+                          <div className="flex items-center text-xs text-gray-600 font-medium">
+                            <User className="h-3 w-3 mr-1" />
+                            {session.coach}
+                          </div>
+                          <div className="flex items-center text-xs text-gray-500">
+                            <MapPin className="h-3 w-3 mr-1" />
+                            {session.location}
+                          </div>
+                        </div>
 
-                    {/* Right: Action */}
-                    <div className="w-full md:w-auto">
-                      {session.user_booked ? (
-                        <Button disabled className="w-full md:w-40 bg-green-500/20 text-green-400 border border-green-500/50 cursor-default">
-                          <Check className="mr-2 h-4 w-4" /> Booked
-                        </Button>
-                      ) : isFull ? (
-                        <Button disabled className="w-full md:w-40 bg-white/5 text-gray-500 border border-white/10 cursor-not-allowed">
-                          Full
-                        </Button>
-                      ) : (
-                        <Button 
-                          onClick={() => handleBook(session.id)}
-                          disabled={!!bookingLoading}
-                          className="w-full md:w-40"
-                        >
-                          {bookingLoading === session.id ? 'Booking...' : 'Book Now'}
-                        </Button>
-                      )}
-                    </div>
-                  </div>
-                </ScrollReveal>
-              );
-            })
-          )}
+                        {/* Hover Overlay for Booking */}
+                        <div className="absolute inset-0 bg-brand-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center rounded-lg">
+                          <Button 
+                            size="sm" 
+                            className="bg-brand-accent text-brand-black hover:bg-white border-none font-bold text-xs px-4"
+                          >
+                            Book Now
+                          </Button>
+                        </div>
+                      </motion.div>
+                    ))
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
