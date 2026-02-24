@@ -30,7 +30,11 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="text-white font-bold mb-1">Call Us</h3>
-                <p className="text-gray-400">+254 743 040 404</p>
+                <p className="text-gray-400">
+                  <a href="https://wa.me/254743040404" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors">
+                    +254 743 040 404
+                  </a>
+                </p>
               </div>
             </div>
 

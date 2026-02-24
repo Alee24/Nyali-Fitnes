@@ -82,10 +82,10 @@ export default function Pricing() {
                     className="bg-brand-black border-4 border-white p-8 flex flex-col items-center text-center relative group hover:bg-white hover:text-brand-black transition-colors duration-300 min-h-[500px]"
                   >
                     <div className="flex-grow flex flex-col items-center justify-center w-full">
-                      <h3 className="text-4xl md:text-5xl font-heading font-black uppercase tracking-tighter mb-6">{plan.duration}</h3>
+                      <h3 className="text-3xl md:text-4xl font-heading font-bold uppercase tracking-wide mb-6">{plan.duration}</h3>
                       
-                      <p className="text-lg font-sans font-bold uppercase tracking-widest mb-2">Starting From</p>
-                      <div className="text-5xl md:text-6xl font-sans font-black tracking-tight mb-6">
+                      <p className="text-base font-sans font-bold uppercase tracking-widest mb-2">Starting From</p>
+                      <div className="text-5xl md:text-6xl font-sans font-bold tracking-tight mb-6">
                         {plan.basic}
                       </div>
 
@@ -120,10 +120,10 @@ export default function Pricing() {
                     className="bg-brand-black border-4 border-white p-8 flex flex-col items-center text-center relative group hover:bg-white hover:text-brand-black transition-colors duration-300 min-h-[500px]"
                   >
                     <div className="flex-grow flex flex-col items-center justify-center w-full">
-                      <h3 className="text-4xl md:text-5xl font-heading font-black uppercase tracking-tighter mb-6">{plan.duration}</h3>
+                      <h3 className="text-3xl md:text-4xl font-heading font-bold uppercase tracking-wide mb-6">{plan.duration}</h3>
                       
-                      <p className="text-lg font-sans font-bold uppercase tracking-widest mb-2">Price</p>
-                      <div className="text-5xl md:text-6xl font-sans font-black tracking-tight mb-8">
+                      <p className="text-base font-sans font-bold uppercase tracking-widest mb-2">Price</p>
+                      <div className="text-5xl md:text-6xl font-sans font-bold tracking-tight mb-8">
                         {plan.price}
                       </div>
                     </div>
@@ -200,7 +200,7 @@ export default function Pricing() {
             <p className="text-gray-400 max-w-2xl mx-auto mb-8 text-lg font-light">
               We offer tailored packages for large teams, schools, and special events. Get in touch with our management team.
             </p>
-            <Button size="lg" onClick={() => window.location.href = '/contact'} className="px-10 py-6 text-lg">Contact Us</Button>
+            <Button size="lg" onClick={() => window.open('https://wa.me/254743040404', '_blank')} className="px-10 py-6 text-lg">Contact Us</Button>
           </ScrollReveal>
         </div>
       </div>

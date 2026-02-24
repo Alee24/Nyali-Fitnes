@@ -184,9 +184,9 @@ export default function CrossFit() {
             <p className="text-2xl text-brand-black/80 mb-12 font-medium">
               You don't have to be great to start, but you have to start to be great.
             </p>
-            <Link to="/contact">
+            <Link to="/pricing">
               <Button variant="secondary" size="lg" className="border-2 border-brand-black font-black px-12 py-6 text-lg bg-brand-black text-white hover:bg-white hover:text-brand-black hover:border-white">
-                Book Your Free Trial
+                Become a Member
               </Button>
             </Link>
           </ScrollReveal>

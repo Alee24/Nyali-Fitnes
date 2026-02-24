@@ -51,9 +51,9 @@ export default function Home() {
               Join the tribe at Nyali Crossfit & Gym. Expert coaching, supportive community, and results-driven training for all fitness levels.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link to="/contact">
+              <Link to="/pricing">
                 <Button size="lg" className="w-full sm:w-auto text-lg px-10 py-6 bg-brand-accent hover:bg-white hover:text-brand-black transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-brand-accent/20">
-                  Book Free Trial
+                  Become a Member
                 </Button>
               </Link>
               <Link to="/schedule">
@@ -226,9 +226,9 @@ export default function Home() {
               Your first class is on us. Come meet the coaches, see the facility, and experience the workout.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Link to="/contact">
+              <Link to="/pricing">
                 <Button variant="secondary" size="lg" className="w-full sm:w-auto font-black border-2 border-brand-black px-12 py-6 text-lg bg-brand-black text-white hover:bg-white hover:text-brand-black hover:border-white">
-                  CLAIM FREE TRIAL
+                  BECOME A MEMBER
                 </Button>
               </Link>
               <a href="https://wa.me/254743040404" target="_blank" rel="noreferrer">

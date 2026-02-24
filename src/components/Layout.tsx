@@ -152,7 +152,11 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-gray-400">
               <li>Promenade Mall Links Rd.</li>
               <li>Mombasa, Coast, Kenya</li>
-              <li className="pt-2 text-brand-accent">+254 743 040 404</li>
+              <li className="pt-2 text-brand-accent">
+                <a href="https://wa.me/254743040404" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  +254 743 040 404
+                </a>
+              </li>
               <li>info@nyalicrossfitgym.com</li>
             </ul>
           </div>
@@ -167,9 +171,9 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-600 flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-600 flex flex-col items-center gap-2">
           <span>&copy; {new Date().getFullYear()} Nyali Crossfit & Gym. All rights reserved.</span>
-          <span className="mt-2 md:mt-0">
+          <span>
             Developed by <a href="https://www.kkdes.co.ke" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">KKDES</a>
           </span>
         </div>
