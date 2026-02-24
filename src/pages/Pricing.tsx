@@ -4,9 +4,12 @@ import { Button } from '@/components/Button';
 import { Check, Users, Bike, Dumbbell, Briefcase } from 'lucide-react';
 import { PRICING_DATA } from '@/lib/supabase';
 import { ScrollReveal } from '@/components/Animations';
+import { BookingModal, BookingDetails } from '@/components/BookingModal';
 
 export default function Pricing() {
   const [activeCategory, setActiveCategory] = useState<'individual' | 'spinning' | 'corporate'>('individual');
+  const [selectedPlan, setSelectedPlan] = useState<BookingDetails | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const categories = [
     { id: 'individual', name: 'Individual', icon: Dumbbell },
@@ -14,8 +17,23 @@ export default function Pricing() {
     { id: 'corporate', name: 'Corporate', icon: Briefcase },
   ] as const;
 
+  const handleBooking = (plan: any, category: string) => {
+    setSelectedPlan({
+      title: `${category} - ${plan.duration}`,
+      subtitle: plan.basic || plan.price,
+      description: plan.premium ? `Premium: ${plan.premium}` : undefined,
+      type: 'Membership'
+    });
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="pt-20 min-h-screen bg-brand-black">
+      <BookingModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        bookingDetails={selectedPlan} 
+      />
       <div className="bg-brand-charcoal py-24 border-b border-white/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -97,7 +115,10 @@ export default function Pricing() {
                     </div>
 
                     <div className="w-full space-y-4 mt-auto">
-                      <Button className="w-full rounded-none border-2 border-current bg-current text-brand-black hover:bg-transparent hover:text-current font-bold uppercase tracking-widest py-6 text-lg transition-all">
+                      <Button 
+                        onClick={() => handleBooking(plan, 'Individual Membership')}
+                        className="w-full rounded-none border-2 border-current bg-current text-brand-black hover:bg-transparent hover:text-current font-bold uppercase tracking-widest py-6 text-lg transition-all"
+                      >
                         Book Now
                       </Button>
                       <Button variant="outline" className="w-full rounded-none border-2 border-current bg-transparent text-current hover:bg-current hover:text-brand-black font-bold uppercase tracking-widest py-6 text-lg transition-all">
@@ -129,7 +150,10 @@ export default function Pricing() {
                     </div>
 
                     <div className="w-full space-y-4 mt-auto">
-                      <Button className="w-full rounded-none border-2 border-current bg-current text-brand-black hover:bg-transparent hover:text-current font-bold uppercase tracking-widest py-6 text-lg transition-all">
+                      <Button 
+                        onClick={() => handleBooking(plan, 'Spinning Class')}
+                        className="w-full rounded-none border-2 border-current bg-current text-brand-black hover:bg-transparent hover:text-current font-bold uppercase tracking-widest py-6 text-lg transition-all"
+                      >
                         Select Plan
                       </Button>
                     </div>

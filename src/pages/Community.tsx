@@ -60,50 +60,76 @@ export default function Community() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Meet the Coaches Section */}
-        <div className="mb-24">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-heading text-white mb-4">Meet Our Coaches</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
-                Our team of expert coaches is dedicated to helping you reach your fitness goals.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {MOCK_COACHES.map((coach, idx) => (
-                <motion.div 
-                  key={coach.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  className="bg-brand-charcoal rounded-xl overflow-hidden border border-white/5 hover:border-brand-accent/50 transition-colors group"
+        {/* Row 1: Video and Coaches */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
+          {/* Left Column: Video */}
+          <div>
+            <ScrollReveal>
+              <div className="mb-8">
+                <h2 className="text-4xl font-heading text-white mb-4">Experience the Energy</h2>
+                <p className="text-gray-400">
+                  Check out what happens inside our walls. From daily WODs to special events, there's always something happening at Nyali Crossfit & Gym.
+                </p>
+              </div>
+              <div className="w-full bg-brand-charcoal rounded-xl overflow-hidden border border-white/10 shadow-2xl sticky top-24">
+                <video 
+                  src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Video-2026-02-23-at-11.54.13-2.mp4" 
+                  controls 
+                  className="w-full h-auto object-cover"
+                  poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop"
                 >
-                  <div className="aspect-[4/5] overflow-hidden relative">
-                    <img 
-                      src={coach.image} 
-                      alt={coach.name} 
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-60" />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-2xl font-heading text-white mb-1">{coach.name}</h3>
-                    <p className="text-brand-accent text-sm font-bold uppercase tracking-wider mb-3">{coach.specialty}</p>
-                    <p className="text-gray-400 text-sm leading-relaxed">{coach.bio}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </ScrollReveal>
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Right Column: Meet the Coaches */}
+          <div>
+            <ScrollReveal>
+              <div className="mb-8">
+                <h2 className="text-4xl font-heading text-white mb-4">Meet Our Coaches</h2>
+                <p className="text-gray-400">
+                  Our team of expert coaches is dedicated to helping you reach your fitness goals.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {MOCK_COACHES.map((coach, idx) => (
+                  <motion.div 
+                    key={coach.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.1 }}
+                    viewport={{ once: true }}
+                    className="bg-brand-charcoal rounded-xl overflow-hidden border border-white/5 hover:border-brand-accent/50 transition-colors group"
+                  >
+                    <div className="aspect-[4/5] overflow-hidden relative">
+                      <img 
+                        src={coach.image} 
+                        alt={coach.name} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-60" />
+                    </div>
+                    <div className="p-4">
+                      <h3 className="text-xl font-heading text-white mb-1">{coach.name}</h3>
+                      <p className="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">{coach.specialty}</p>
+                      <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">{coach.bio}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
 
+        {/* Row 2: Gallery */}
         <ScrollReveal>
           <div className="text-center mb-10">
             <h2 className="text-4xl font-heading text-white mb-4">Gallery</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {galleryImages.map((image, idx) => (
               <motion.div 
                 key={idx}
@@ -118,39 +144,14 @@ export default function Community() {
                   alt={image.alt} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
-                  <span className="text-brand-accent text-xs font-bold uppercase tracking-wider mb-1">{image.category}</span>
-                  <h3 className="text-white font-heading text-xl">{image.alt}</h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-4">
+                  <span className="text-brand-accent text-[10px] font-bold uppercase tracking-wider mb-1">{image.category}</span>
+                  <h3 className="text-white font-heading text-lg">{image.alt}</h3>
                 </div>
               </motion.div>
             ))}
           </div>
         </ScrollReveal>
-
-        <div className="mt-24">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-heading text-white mb-4">Experience the Energy</h2>
-              <p className="text-gray-400 max-w-2xl mx-auto">
-                Check out what happens inside our walls. From daily WODs to special events, there's always something happening at Nyali Crossfit & Gym.
-              </p>
-            </div>
-            
-            <div className="aspect-video w-full bg-brand-charcoal rounded-xl overflow-hidden border border-white/10 relative group">
-               {/* Placeholder for a video embed or a local video */}
-               <div className="absolute inset-0 flex items-center justify-center bg-black/50 group-hover:bg-black/40 transition-colors">
-                  <div className="w-20 h-20 rounded-full bg-brand-accent/90 flex items-center justify-center pl-1 cursor-pointer hover:scale-110 transition-transform">
-                    <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-brand-black border-b-[12px] border-b-transparent ml-1" />
-                  </div>
-               </div>
-               <img 
-                src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop" 
-                alt="Video Thumbnail" 
-                className="w-full h-full object-cover opacity-50"
-               />
-            </div>
-          </ScrollReveal>
-        </div>
       </div>
     </div>
   );
