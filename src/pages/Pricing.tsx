@@ -99,6 +99,11 @@ export default function Pricing() {
                     transition={{ delay: idx * 0.05 }}
                     className="bg-brand-black border-4 border-white p-8 flex flex-col items-center text-center relative group hover:bg-white hover:text-brand-black transition-colors duration-300 min-h-[500px]"
                   >
+                    {plan.highlight && (
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-brand-accent text-brand-black text-xs font-bold uppercase py-1 px-3 tracking-widest whitespace-nowrap z-10 shadow-lg">
+                        {plan.highlight}
+                      </div>
+                    )}
                     <div className="flex-grow flex flex-col items-center justify-center w-full">
                       <h3 className="text-3xl md:text-4xl font-heading font-bold uppercase tracking-wide mb-6">{plan.duration}</h3>
                       

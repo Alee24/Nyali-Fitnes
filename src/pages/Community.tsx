@@ -75,6 +75,10 @@ export default function Community() {
                 <video 
                   src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Video-2026-02-23-at-11.54.13-2.mp4" 
                   controls 
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
                   className="w-full h-auto object-cover"
                   poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop"
                 >

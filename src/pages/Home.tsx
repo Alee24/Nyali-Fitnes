@@ -23,7 +23,7 @@ export default function Home() {
             className="w-full h-full object-cover scale-110"
             poster="https://images.unsplash.com/photo-1574680096141-1cddd32e04ca?q=80&w=2070&auto=format&fit=crop"
           >
-            <source src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Video-2026-02-23-at-12.06.50.mp4" type="video/mp4" />
+            <source src="https://mclinic.co.ke/wp-content/uploads/2026/02/Hreo-image.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

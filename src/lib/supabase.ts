@@ -44,12 +44,12 @@ export const PRICING_DATA = {
     title: "Individual Membership",
     description: "Includes Gym, CrossFit, and Sauna.",
     plans: [
-      { duration: "Daily", basic: "KSh 1,500", premium: null },
-      { duration: "Weekly", basic: "KSh 5,000", premium: null },
-      { duration: "Monthly", basic: "KSh 11,000", premium: "KSh 12,999" },
+      { duration: "Daily", basic: "KSh 1,700", premium: null },
+      { duration: "Weekly", basic: "KSh 6,000", premium: null },
+      { duration: "Starter Month", basic: "KSh 11,000", premium: "KSh 12,999" },
       { duration: "Quarterly", basic: "KSh 30,000", premium: "KSh 33,000" },
       { duration: "6 Months", basic: "KSh 55,000", premium: "KSh 59,000" },
-      { duration: "Annual", basic: "KSh 99,000", premium: "KSh 117,000", highlight: "Best Value" },
+      { duration: "Annual", basic: "KSh 99,000", premium: "KSh 117,000", highlight: "Best Value: Pay 9 Months, Train 12 (3 Months Free)" },
     ]
   },
   spinning: {
@@ -57,11 +57,6 @@ export const PRICING_DATA = {
     description: "Access to Spinning classes.",
     plans: [
       { duration: "Daily", price: "KSh 1,000" },
-      { duration: "Weekly", price: "KSh 3,000" },
-      { duration: "Monthly", price: "KSh 7,000" },
-      { duration: "Quarterly", price: "KSh 18,900" },
-      { duration: "6 Months", price: "KSh 35,000" },
-      { duration: "Annual", price: "KSh 56,700" },
     ]
   },
   corporate: {
