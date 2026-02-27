@@ -117,16 +117,20 @@ export default function Pricing() {
                           Premium: {plan.premium}
                         </div>
                       )}
+                      
+                      <p className="text-gray-400 text-sm font-medium uppercase tracking-wider mb-8">
+                        Includes Gym, CrossFit, and Sauna.
+                      </p>
                     </div>
 
                     <div className="w-full space-y-4 mt-auto">
                       <Button 
                         onClick={() => handleBooking(plan, 'Individual Membership')}
-                        className="w-full rounded-none border-2 border-current bg-current text-brand-black hover:bg-transparent hover:text-current font-bold uppercase tracking-widest py-6 text-lg transition-all"
+                        className="w-full rounded-none border-2 border-brand-accent bg-brand-accent text-brand-black hover:bg-white hover:text-brand-black hover:border-white font-bold uppercase tracking-widest py-6 text-lg transition-all"
                       >
                         Book Now
                       </Button>
-                      <Button variant="outline" className="w-full rounded-none border-2 border-current bg-transparent text-current hover:bg-current hover:text-brand-black font-bold uppercase tracking-widest py-6 text-lg transition-all">
+                      <Button variant="outline" className="w-full rounded-none border-2 border-white bg-transparent text-white hover:bg-white hover:text-brand-black font-bold uppercase tracking-widest py-6 text-lg transition-all">
                         Day Pass
                       </Button>
                     </div>
@@ -170,22 +174,24 @@ export default function Pricing() {
             {activeCategory === 'corporate' && (
               <div className="space-y-8">
                 <div className="bg-brand-charcoal border border-white/10 p-8 rounded-xl">
-                  <h3 className="text-2xl font-heading text-white mb-6">Inquire via WhatsApp</h3>
+                  <h3 className="text-2xl font-heading text-white mb-6">Inquire via Email</h3>
                   <form 
                     onSubmit={(e) => {
                       e.preventDefault();
                       const formData = new FormData(e.currentTarget);
                       const data = Object.fromEntries(formData);
-                      const message = `*Corporate Membership Inquiry*\n\n` +
-                        `*Company:* ${data.company}\n` +
-                        `*Contact Person:* ${data.name}\n` +
-                        `*Email:* ${data.email}\n` +
-                        `*Phone:* ${data.phone}\n` +
-                        `*Employees:* ${data.employees}\n\n` +
-                        `Hello, I would like to inquire about corporate membership options.`;
                       
-                      const url = `https://wa.me/254743040404?text=${encodeURIComponent(message)}`;
-                      window.open(url, '_blank');
+                      const subject = `Corporate Membership Inquiry: ${data.company}`;
+                      const body = `Corporate Membership Inquiry Details:\n\n` +
+                        `Company: ${data.company}\n` +
+                        `Contact Person: ${data.name}\n` +
+                        `Email: ${data.email}\n` +
+                        `Phone: ${data.phone}\n` +
+                        `Employees: ${data.employees}\n\n` +
+                        `Message: Hello, I would like to inquire about corporate membership options.`;
+                      
+                      const mailtoUrl = `mailto:info@nyalicrossfitgym.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                      window.location.href = mailtoUrl;
                     }}
                     className="space-y-4"
                   >
@@ -213,8 +219,8 @@ export default function Pricing() {
                       <label className="block text-sm font-medium text-gray-400 mb-1">Number of Employees (Approx.)</label>
                       <input required name="employees" type="number" className="w-full bg-black/40 border border-white/10 rounded px-4 py-2 text-white focus:border-brand-accent focus:outline-none" />
                     </div>
-                    <Button type="submit" className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white border-none">
-                      Send Inquiry via WhatsApp
+                    <Button type="submit" className="w-full bg-brand-accent hover:bg-white hover:text-brand-black text-brand-black border-none font-bold">
+                      Send Inquiry via Email
                     </Button>
                   </form>
                 </div>
@@ -223,13 +229,62 @@ export default function Pricing() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="mt-24 text-center">
+        <div className="mt-24">
           <ScrollReveal>
-            <h3 className="text-3xl font-heading text-white mb-6">Need a Custom Plan?</h3>
-            <p className="text-gray-400 max-w-2xl mx-auto mb-8 text-lg font-light">
-              We offer tailored packages for large teams, schools, and special events. Get in touch with our management team.
-            </p>
-            <Button size="lg" onClick={() => window.open('https://wa.me/254743040404', '_blank')} className="px-10 py-6 text-lg">Contact Us</Button>
+            <div className="bg-brand-charcoal border border-white/10 p-8 md:p-12 rounded-xl max-w-4xl mx-auto shadow-2xl">
+              <div className="text-center mb-10">
+                <h3 className="text-3xl md:text-4xl font-heading text-white mb-4 tracking-wide">Build Your Custom Package</h3>
+                <p className="text-gray-400 text-lg font-light max-w-2xl mx-auto">
+                  Tell us exactly what you need, and we'll create a membership plan tailored to your specific goals and schedule.
+                </p>
+              </div>
+              
+              <form 
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  const formData = new FormData(e.currentTarget);
+                  const data = Object.fromEntries(formData);
+                  
+                  const subject = `Custom Package Request: ${data.name}`;
+                  const body = `Custom Package Request Details:\n\n` +
+                    `Name: ${data.name}\n` +
+                    `Email: ${data.email}\n` +
+                    `Phone: ${data.phone}\n\n` +
+                    `Package Requirements:\n${data.requirements}`;
+                  
+                  const mailtoUrl = `mailto:info@nyalicrossfitgym.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                  window.location.href = mailtoUrl;
+                }}
+                className="space-y-6 text-left"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-sm font-bold text-brand-accent uppercase tracking-wider mb-2">Name</label>
+                    <input required name="name" type="text" className="w-full bg-black/40 border border-white/10 p-4 text-white focus:border-brand-accent focus:outline-none transition-colors rounded-none" placeholder="Your Name" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-bold text-brand-accent uppercase tracking-wider mb-2">Phone Number</label>
+                    <input required name="phone" type="tel" className="w-full bg-black/40 border border-white/10 p-4 text-white focus:border-brand-accent focus:outline-none transition-colors rounded-none" placeholder="Your Phone Number" />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-bold text-brand-accent uppercase tracking-wider mb-2">Email Address</label>
+                  <input required name="email" type="email" className="w-full bg-black/40 border border-white/10 p-4 text-white focus:border-brand-accent focus:outline-none transition-colors rounded-none" placeholder="Your Email Address" />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-bold text-brand-accent uppercase tracking-wider mb-2">What do you want in your package?</label>
+                  <textarea required name="requirements" rows={4} className="w-full bg-black/40 border border-white/10 p-4 text-white focus:border-brand-accent focus:outline-none transition-colors resize-none rounded-none" placeholder="Describe your ideal membership package (e.g., 3 days/week, morning classes only, personal training included)..."></textarea>
+                </div>
+                
+                <div className="text-center pt-6">
+                  <Button type="submit" size="lg" className="w-full md:w-auto bg-brand-accent hover:bg-white hover:text-brand-black text-brand-black font-bold text-xl px-12 py-4 uppercase tracking-widest shadow-lg shadow-brand-accent/20 rounded-none transition-all transform hover:-translate-y-1">
+                    Send Request
+                  </Button>
+                </div>
+              </form>
+            </div>
           </ScrollReveal>
         </div>
       </div>

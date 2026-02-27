@@ -15,7 +15,7 @@ import CrossFit from '@/pages/CrossFit';
 
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 
-import Community from '@/pages/Community';
+import Facility from '@/pages/Facility';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -42,7 +42,7 @@ export default function App() {
           <Route path="/crossfit" element={<CrossFit />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/coaches" element={<Coaches />} />
-          <Route path="/community" element={<Community />} />
+          <Route path="/facility" element={<Facility />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/classes" element={<Schedule />} />
           <Route path="/contact" element={<Contact />} />

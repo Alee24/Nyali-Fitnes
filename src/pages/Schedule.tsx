@@ -10,249 +10,108 @@ import { BookingModal } from '@/components/BookingModal';
 const WEEKLY_TEMPLATE: { [key: number]: any[] } = {
   // Monday
   1: [
-    {
-      id: 'mon-1',
-      title: 'NCG // Engine',
-      start_time: '06:00',
-      duration_minutes: 45,
-      coach: 'Gym Instructor',
-      location: 'Group Training Area',
-      intensity: 'High'
-    },
-    {
-      id: 'mon-2',
-      title: 'HYROX TECHNIQUE',
-      start_time: '13:30',
-      duration_minutes: 35,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'Medium'
-    },
-    {
-      id: 'mon-3',
-      title: 'HYROX INTRO',
-      start_time: '18:00',
-      duration_minutes: 15,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'Low'
-    },
-    {
-      id: 'mon-4',
-      title: 'NCG X HERA',
-      start_time: '18:15',
-      duration_minutes: 60,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'High'
-    },
-    {
-      id: 'mon-5',
-      title: 'NCG // Powerlift',
-      start_time: '19:30',
-      duration_minutes: 45,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'High'
-    }
+    { id: 'mon-1', title: 'CrossFit', start_time: '05:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'mon-2', title: 'CrossFit', start_time: '06:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'mon-3', title: 'CrossFit', start_time: '07:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'mon-4', title: 'Introduction', start_time: '08:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'mon-5', title: 'Female Only CrossFit', start_time: '08:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'mon-6', title: 'Female Only CrossFit', start_time: '10:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'mon-7', title: 'Female Only CrossFit', start_time: '11:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'mon-8', title: 'CrossFit', start_time: '14:45', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'mon-9', title: 'CrossFit', start_time: '16:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'mon-10', title: 'Introduction', start_time: '17:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'mon-11', title: 'CrossFit', start_time: '17:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'mon-12', title: 'CrossFit', start_time: '18:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'mon-13', title: 'Introduction', start_time: '18:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'mon-14', title: 'CrossFit', start_time: '19:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'mon-15', title: 'CrossFit', start_time: '20:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
   ],
   // Tuesday
   2: [
-    {
-      id: 'tue-1',
-      title: 'HYROX // Strength',
-      start_time: '06:00',
-      duration_minutes: 60,
-      coach: 'Gym Instructor',
-      location: 'Group Training Area',
-      intensity: 'High'
-    },
-    {
-      id: 'tue-2',
-      title: 'HYROX TECHNIQUE',
-      start_time: '12:00',
-      duration_minutes: 35,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'Medium'
-    },
-    {
-      id: 'tue-3',
-      title: 'HYROX TECHNIQUE',
-      start_time: '17:00',
-      duration_minutes: 30,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'Medium'
-    },
-    {
-      id: 'tue-4',
-      title: 'Bulletproof',
-      start_time: '18:45',
-      duration_minutes: 45,
-      coach: 'Gym Instructor',
-      location: 'PT Mezzanine',
-      intensity: 'High'
-    }
+    { id: 'tue-1', title: 'CrossFit', start_time: '05:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'tue-2', title: 'CrossFit', start_time: '06:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'tue-3', title: 'CrossFit', start_time: '07:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'tue-4', title: 'Introduction', start_time: '08:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'tue-5', title: 'Female Only CrossFit', start_time: '08:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'tue-6', title: 'Female Only CrossFit', start_time: '10:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'tue-7', title: 'Female Only CrossFit', start_time: '11:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'tue-8', title: 'CrossFit', start_time: '14:45', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'tue-9', title: 'Introduction', start_time: '15:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'tue-10', title: 'CrossFit', start_time: '16:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'tue-11', title: 'Introduction', start_time: '17:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'tue-12', title: 'CrossFit', start_time: '17:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'tue-13', title: 'Introduction', start_time: '18:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'tue-14', title: 'Upper Body', start_time: '18:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'tue-15', title: 'CrossFit', start_time: '19:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'tue-16', title: 'Spinning', start_time: '19:15', duration_minutes: 45, coach: 'Gym Instructor', location: 'Spin Studio', intensity: 'High' },
+    { id: 'tue-17', title: 'CrossFit', start_time: '20:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
   ],
   // Wednesday
   3: [
-    {
-      id: 'wed-1',
-      title: 'HYROX',
-      start_time: '06:00',
-      duration_minutes: 60,
-      coach: 'Gym Instructor',
-      location: 'Group Training Area',
-      intensity: 'High'
-    },
-    {
-      id: 'wed-2',
-      title: 'HYROX // BLAST',
-      start_time: '13:00',
-      duration_minutes: 30,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'High'
-    },
-    {
-      id: 'wed-3',
-      title: 'Induction - Functional',
-      start_time: '17:00',
-      duration_minutes: 30,
-      coach: 'Gym Instructor',
-      location: 'Functional Area',
-      intensity: 'Low'
-    },
-    {
-      id: 'wed-4',
-      title: 'HYROX INTRO',
-      start_time: '18:00',
-      duration_minutes: 15,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'Low'
-    },
-    {
-      id: 'wed-5',
-      title: 'HYROX // INTERVALS',
-      start_time: '18:15',
-      duration_minutes: 60,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'High'
-    }
+    { id: 'wed-1', title: 'CrossFit', start_time: '05:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'wed-2', title: 'CrossFit', start_time: '06:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'wed-3', title: 'CrossFit', start_time: '07:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'wed-4', title: 'Female Only CrossFit', start_time: '08:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'wed-5', title: 'Female Only CrossFit', start_time: '10:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'wed-6', title: 'Female Only Upper Body', start_time: '11:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'wed-7', title: 'CrossFit', start_time: '14:45', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'wed-8', title: 'CrossFit', start_time: '16:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'wed-9', title: 'Introduction', start_time: '17:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'wed-10', title: 'CrossFit', start_time: '17:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'wed-11', title: 'CrossFit', start_time: '18:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'wed-12', title: 'Introduction', start_time: '18:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'wed-13', title: 'CrossFit', start_time: '19:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'wed-14', title: 'CrossFit', start_time: '20:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
   ],
   // Thursday
   4: [
-    {
-      id: 'thu-1',
-      title: 'NCG // Engine',
-      start_time: '06:00',
-      duration_minutes: 45,
-      coach: 'Gym Instructor',
-      location: 'Group Training Area',
-      intensity: 'High'
-    },
-    {
-      id: 'thu-2',
-      title: 'HYROX // BLAST',
-      start_time: '12:30',
-      duration_minutes: 30,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'High'
-    },
-    {
-      id: 'thu-3',
-      title: 'HYROX // Strength',
-      start_time: '18:15',
-      duration_minutes: 45,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'High'
-    }
+    { id: 'thu-1', title: 'CrossFit', start_time: '05:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'thu-2', title: 'CrossFit', start_time: '06:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'thu-3', title: 'CrossFit', start_time: '07:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'thu-4', title: 'Introduction', start_time: '08:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'thu-5', title: 'Female Only CrossFit', start_time: '08:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'thu-6', title: 'Female Only CrossFit', start_time: '10:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'thu-7', title: 'Female Only CrossFit', start_time: '11:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'thu-8', title: 'CrossFit', start_time: '14:45', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'thu-9', title: 'CrossFit', start_time: '16:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'thu-10', title: 'Introduction', start_time: '17:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'thu-11', title: 'Introduction', start_time: '18:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'thu-12', title: 'Lower Body', start_time: '18:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'thu-13', title: 'CrossFit', start_time: '19:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'thu-14', title: 'Spinning', start_time: '19:15', duration_minutes: 45, coach: 'Gym Instructor', location: 'Spin Studio', intensity: 'High' },
+    { id: 'thu-15', title: 'CrossFit', start_time: '20:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
   ],
   // Friday
   5: [
-    {
-      id: 'fri-1',
-      title: 'HYROX // INTERVALS',
-      start_time: '06:00',
-      duration_minutes: 45,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'High'
-    },
-    {
-      id: 'fri-2',
-      title: 'HYROX // Strength',
-      start_time: '12:30',
-      duration_minutes: 45,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'High'
-    },
-    {
-      id: 'fri-3',
-      title: 'NCG // Powerlift',
-      start_time: '18:30',
-      duration_minutes: 60,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'High'
-    }
+    { id: 'fri-1', title: 'CrossFit', start_time: '05:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'fri-2', title: 'CrossFit', start_time: '06:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'fri-3', title: 'CrossFit', start_time: '07:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'fri-4', title: 'Introduction', start_time: '08:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'fri-5', title: 'Female Only CrossFit', start_time: '08:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'fri-6', title: 'Female Only CrossFit', start_time: '10:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'fri-7', title: 'Female Only CrossFit', start_time: '11:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'fri-8', title: 'CrossFit', start_time: '14:45', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'fri-9', title: 'Introduction', start_time: '15:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'fri-10', title: 'CrossFit', start_time: '16:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'fri-11', title: 'Introduction', start_time: '17:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
+    { id: 'fri-12', title: 'CrossFit', start_time: '18:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'fri-13', title: 'CrossFit Open', start_time: '19:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
   ],
   // Saturday
   6: [
-    {
-      id: 'sat-1',
-      title: 'NCG // TEAM SEND',
-      start_time: '08:15',
-      duration_minutes: 45,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'High'
-    },
-    {
-      id: 'sat-2',
-      title: 'Pull-up Master class',
-      start_time: '08:45',
-      duration_minutes: 75,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'Medium'
-    },
-    {
-      id: 'sat-3',
-      title: 'Open Gym',
-      start_time: '10:00',
-      duration_minutes: 120,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'Low'
-    }
+    { id: 'sat-1', title: 'CrossFit', start_time: '06:15', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'sat-2', title: 'Full Body Mobility', start_time: '07:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Low' },
+    { id: 'sat-3', title: 'CrossFit', start_time: '08:45', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'sat-4', title: 'Female Only CrossFit', start_time: '10:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'sat-5', title: 'Female Only Lower Body', start_time: '11:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Medium' },
+    { id: 'sat-6', title: 'GENTS ICE BATH', start_time: '14:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Recovery Area', intensity: 'Low' },
+    { id: 'sat-7', title: 'CrossFit', start_time: '15:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'sat-8', title: 'CrossFit', start_time: '16:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
+    { id: 'sat-9', title: 'CrossFit', start_time: '17:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'High' },
   ],
   // Sunday
   0: [
-    {
-      id: 'sun-1',
-      title: 'Open Gym',
-      start_time: '09:00',
-      duration_minutes: 180,
-      coach: 'Gym Instructor',
-      location: 'Gym Floor',
-      intensity: 'Low'
-    },
-    {
-      id: 'sun-2',
-      title: 'Yoga & Mobility',
-      start_time: '10:00',
-      duration_minutes: 60,
-      coach: 'Gym Instructor',
-      location: 'Studio',
-      intensity: 'Low'
-    }
+    { id: 'sun-1', title: 'Open Gym', start_time: '09:00', duration_minutes: 180, coach: 'Gym Instructor', location: 'Gym Floor', intensity: 'Low' },
   ]
 };
 
@@ -341,14 +200,14 @@ export default function Schedule() {
   const getClassColor = (title: string) => {
     const t = title.toLowerCase();
     if (t.includes('hyrox')) return 'bg-orange-500';
-    if (t.includes('ncg') || t.includes('strength')) return 'bg-yellow-500';
-    if (t.includes('cardio') || t.includes('sweat')) return 'bg-blue-500';
-    if (t.includes('yoga') || t.includes('mobility')) return 'bg-green-500';
-    if (t.includes('bulletproof')) return 'bg-gray-500';
-    if (t.includes('induction')) return 'bg-cyan-400';
-    if (t.includes('pull-up')) return 'bg-purple-600';
-    if (t.includes('powerlift')) return 'bg-green-500';
-    return 'bg-brand-accent';
+    if (t.includes('crossfit')) return 'bg-brand-accent';
+    if (t.includes('introduction')) return 'bg-green-500';
+    if (t.includes('female only')) return 'bg-purple-500';
+    if (t.includes('upper body') || t.includes('lower body')) return 'bg-yellow-500';
+    if (t.includes('spinning')) return 'bg-blue-500';
+    if (t.includes('mobility')) return 'bg-teal-500';
+    if (t.includes('ice bath')) return 'bg-cyan-400';
+    return 'bg-gray-500';
   };
 
   const handleClassClick = (session: any) => {
@@ -423,48 +282,67 @@ export default function Schedule() {
                       No classes
                     </div>
                   ) : (
-                    weeklySchedules[day.dateString]?.map((session) => (
-                      <motion.div
-                        key={session.id}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="group relative bg-white text-brand-black p-3 rounded-lg border-l-4 border-brand-accent hover:translate-y-[-2px] transition-all duration-200 shadow-lg cursor-pointer"
-                        style={{ borderLeftColor: getClassColor(session.title).replace('bg-', 'var(--color-') }}
-                        onClick={() => handleClassClick(session)}
-                      >
-                        <div className={`absolute top-3 right-3 w-3 h-3 rounded-full ${getClassColor(session.title)}`} />
-                        
-                        <div className="flex justify-between items-end mb-2 border-b border-gray-200 pb-2">
-                          <span className="font-bold text-lg leading-none">{formatTime(session.start_time)}</span>
-                          <span className="text-xs font-mono text-gray-500">{formatDuration(session.duration_minutes)}</span>
-                        </div>
-                        
-                        <h3 className="font-heading font-bold text-lg leading-tight mb-1 uppercase tracking-tight">
-                          {session.title}
-                        </h3>
-                        
-                        <div className="space-y-1">
-                          <div className="flex items-center text-xs text-gray-600 font-medium">
-                            <User className="h-3 w-3 mr-1" />
-                            {session.coach}
-                          </div>
-                          <div className="flex items-center text-xs text-gray-500">
-                            <MapPin className="h-3 w-3 mr-1" />
-                            {session.location}
-                          </div>
-                        </div>
+                    (() => {
+                      // Group sessions by start time
+                      const sessions = weeklySchedules[day.dateString] || [];
+                      const groups: { [key: string]: any[] } = {};
+                      sessions.forEach(session => {
+                        if (!groups[session.start_time]) {
+                          groups[session.start_time] = [];
+                        }
+                        groups[session.start_time].push(session);
+                      });
+                      
+                      // Sort groups by time
+                      const sortedTimes = Object.keys(groups).sort();
+                      
+                      return sortedTimes.map((time) => (
+                        <div key={time} className="flex gap-2">
+                          {groups[time].map((session) => (
+                            <motion.div
+                              key={session.id}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="flex-1 min-w-0 group relative bg-white text-brand-black p-3 rounded-lg border-l-4 border-brand-accent hover:translate-y-[-2px] transition-all duration-200 shadow-lg cursor-pointer"
+                              style={{ borderLeftColor: getClassColor(session.title).replace('bg-', 'var(--color-') }}
+                              onClick={() => handleClassClick(session)}
+                            >
+                              <div className={`absolute top-3 right-3 w-3 h-3 rounded-full ${getClassColor(session.title)}`} />
+                              
+                              <div className="flex justify-between items-end mb-2 border-b border-gray-200 pb-2">
+                                <span className="font-bold text-lg leading-none">{formatTime(session.start_time)}</span>
+                                <span className="text-xs font-mono text-gray-500">{formatDuration(session.duration_minutes)}</span>
+                              </div>
+                              
+                              <h3 className="font-heading font-bold text-lg leading-tight mb-1 uppercase tracking-tight truncate">
+                                {session.title}
+                              </h3>
+                              
+                              <div className="space-y-1">
+                                <div className="flex items-center text-xs text-gray-600 font-medium truncate">
+                                  <User className="h-3 w-3 mr-1 flex-shrink-0" />
+                                  <span className="truncate">{session.coach}</span>
+                                </div>
+                                <div className="flex items-center text-xs text-gray-500 truncate">
+                                  <MapPin className="h-3 w-3 mr-1 flex-shrink-0" />
+                                  <span className="truncate">{session.location}</span>
+                                </div>
+                              </div>
 
-                        {/* Hover Overlay for Booking */}
-                        <div className="absolute inset-0 bg-brand-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center rounded-lg">
-                          <Button 
-                            size="sm" 
-                            className="bg-brand-accent text-brand-black hover:bg-white border-none font-bold text-xs px-4"
-                          >
-                            Book Now
-                          </Button>
+                              {/* Hover Overlay for Booking */}
+                              <div className="absolute inset-0 bg-brand-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center rounded-lg">
+                                <Button 
+                                  size="sm" 
+                                  className="bg-brand-accent text-brand-black hover:bg-white border-none font-bold text-xs px-4 whitespace-nowrap"
+                                >
+                                  Book Now
+                                </Button>
+                              </div>
+                            </motion.div>
+                          ))}
                         </div>
-                      </motion.div>
-                    ))
+                      ));
+                    })()
                   )}
                 </div>
               </div>

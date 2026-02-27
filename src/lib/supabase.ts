@@ -1,10 +1,10 @@
 // Mock data for the website
 export const MOCK_CLASSES = [
-  { id: 1, title: 'CrossFit WOD', time: '06:00 AM', duration: '60 min', coach: 'Coach Mike', intensity: 'High' },
-  { id: 2, title: 'Functional Strength', time: '07:30 AM', duration: '60 min', coach: 'Coach Sarah', intensity: 'Medium' },
-  { id: 3, title: 'Open Gym', time: '09:00 AM', duration: '120 min', coach: 'Staff', intensity: 'Variable' },
-  { id: 4, title: 'CrossFit WOD', time: '05:00 PM', duration: '60 min', coach: 'Coach Mike', intensity: 'High' },
-  { id: 5, title: 'Spinning', time: '06:30 PM', duration: '45 min', coach: 'Coach Jane', intensity: 'High' },
+  { id: 1, title: 'CrossFit WOD', time: '06:00 AM', duration: '60 min', coach: 'Gym Instructor', intensity: 'High' },
+  { id: 2, title: 'Functional Strength', time: '07:30 AM', duration: '60 min', coach: 'Gym Instructor', intensity: 'Medium' },
+  { id: 3, title: 'Open Gym', time: '09:00 AM', duration: '120 min', coach: 'Gym Instructor', intensity: 'Variable' },
+  { id: 4, title: 'CrossFit WOD', time: '05:00 PM', duration: '60 min', coach: 'Gym Instructor', intensity: 'High' },
+  { id: 5, title: 'Spinning', time: '06:30 PM', duration: '45 min', coach: 'Gym Instructor', intensity: 'High' },
 ];
 
 import { createClient } from '@supabase/supabase-js';
@@ -18,21 +18,21 @@ export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);
 export const MOCK_COACHES = [
   { 
     id: 1, 
-    name: 'Mike Ochieng', 
+    name: 'Gym Instructor', 
     specialty: 'Head Coach / CrossFit L3', 
-    bio: 'Former competitive lifter with 10 years of CrossFit coaching experience.',
+    bio: 'Experienced in competitive lifting and CrossFit coaching.',
     image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop'
   },
   { 
     id: 2, 
-    name: 'Sarah Kamau', 
+    name: 'Gym Instructor', 
     specialty: 'Gymnastics & Mobility', 
     bio: 'Specializes in bodyweight movements and injury prevention.',
     image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop'
   },
   { 
     id: 3, 
-    name: 'David "The Beast"', 
+    name: 'Gym Instructor', 
     specialty: 'Strength & Conditioning', 
     bio: 'Focuses on raw strength and power development.',
     image: 'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1470&auto=format&fit=crop'

@@ -1,30 +1,12 @@
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ScrollReveal } from '@/components/Animations';
 import { MOCK_COACHES } from '@/lib/supabase';
-import { ChevronRight } from 'lucide-react';
-import { BookingModal, BookingDetails } from '@/components/BookingModal';
+import { ChevronRight, X } from 'lucide-react';
 
-export default function Community() {
-  const [selectedPlan, setSelectedPlan] = useState<BookingDetails | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleBooking = (title: string, price: string) => {
-    setSelectedPlan({
-      title,
-      subtitle: price,
-      type: 'Membership'
-    });
-    setIsModalOpen(true);
-  };
-
+export default function Facility() {
   return (
     <div className="pt-20 min-h-screen bg-brand-black">
-      <BookingModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        bookingDetails={selectedPlan} 
-      />
       <div className="bg-brand-charcoal py-24 border-b border-white/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -41,7 +23,7 @@ export default function Community() {
             transition={{ delay: 0.2 }}
             className="text-xl text-gray-400 max-w-2xl mx-auto font-light"
           >
-            More than just a gym. We are a family united by fitness.
+            World-class equipment. Expert coaching. Unmatched atmosphere.
           </motion.p>
         </div>
       </div>
@@ -117,12 +99,9 @@ export default function Community() {
                     ))}
                   </ul>
                 </div>
-                <button 
-                  onClick={() => handleBooking('Basic Membership', 'Starting at KSh 6,000')}
-                  className="w-full bg-white text-black font-heading text-2xl py-4 hover:bg-gray-200 transition-colors uppercase tracking-wide block cursor-pointer"
-                >
+                <a href="/pricing" className="w-full bg-white text-black font-heading text-2xl py-4 hover:bg-gray-200 transition-colors uppercase tracking-wide block">
                   Enquire Now
-                </button>
+                </a>
               </div>
 
               {/* Premium Package */}
@@ -142,12 +121,9 @@ export default function Community() {
                     ))}
                   </ul>
                 </div>
-                <button 
-                  onClick={() => handleBooking('Premium Membership', 'Starting at KSh 11,000')}
-                  className="w-full bg-white text-black font-heading text-2xl py-4 hover:bg-gray-200 transition-colors uppercase tracking-wide block cursor-pointer"
-                >
+                <a href="/pricing" className="w-full bg-white text-black font-heading text-2xl py-4 hover:bg-gray-200 transition-colors uppercase tracking-wide block">
                   Enquire Now
-                </button>
+                </a>
               </div>
             </div>
           </ScrollReveal>

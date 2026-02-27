@@ -101,6 +101,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Special Offer Section */}
+      <section className="py-20 bg-brand-black border-y border-white/10 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-brand-charcoal border-2 border-brand-accent p-8 md:p-12 rounded-xl flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_50px_rgba(242,125,38,0.15)]">
+            <div className="flex-1 text-center md:text-left">
+              <div className="inline-block bg-brand-accent text-brand-black text-xs font-bold uppercase py-1 px-3 tracking-widest mb-4 rounded-sm">
+                Limited Time Offer
+              </div>
+              <h2 className="text-4xl md:text-6xl font-heading text-white mb-4 tracking-tight">
+                ANNUAL <span className="text-brand-accent">BEST VALUE</span>
+              </h2>
+              <p className="text-xl text-gray-300 font-light max-w-2xl">
+                Commit to your fitness journey and save big. <strong className="text-white">Pay for 9 months, train for 12.</strong> That's 3 months absolutely free.
+              </p>
+            </div>
+            <div className="flex-shrink-0">
+              <Link to="/pricing">
+                <Button size="lg" className="bg-brand-accent hover:bg-white hover:text-brand-black text-brand-black font-bold text-xl px-10 py-8 h-auto shadow-lg shadow-brand-accent/20 transform hover:-translate-y-1 transition-all duration-300">
+                  Get Offer <ArrowRight className="ml-2 h-6 w-6" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us */}
       <section className="py-24 bg-brand-black relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,29 +143,45 @@ export default function Home() {
               {
                 icon: Trophy,
                 title: "Expert Coaching",
-                desc: "Our certified coaches guide every movement to ensure safety and maximize your results."
+                desc: "Our certified coaches guide every movement to ensure safety and maximize your results.",
+                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.15-1.jpeg"
               },
               {
                 icon: Users,
                 title: "Community Support",
-                desc: "Train with a tribe that pushes you to be your best. We sweat, struggle, and succeed together."
+                desc: "Train with a tribe that pushes you to be your best. We sweat, struggle, and succeed together.",
+                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.05.17.jpeg"
               },
               {
                 icon: Flame,
                 title: "Results Driven",
-                desc: "Proven programming that builds functional strength, endurance, and mental toughness."
+                desc: "Proven programming that builds functional strength, endurance, and mental toughness.",
+                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.16.jpeg"
               }
             ].map((item, index) => (
               <ScrollReveal key={index} delay={index * 0.2}>
                 <div className="bg-brand-charcoal p-10 rounded-none border border-white/5 hover:border-brand-accent transition-all duration-500 group h-full relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-brand-accent/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500" />
+                  
+                  {/* Background Image */}
+                  <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-70 transition-opacity duration-500">
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                    />
+                  </div>
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 z-0 bg-gradient-to-b from-brand-charcoal/50 to-brand-black/80 pointer-events-none" />
+
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-brand-accent/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500 z-0" />
                   
                   <div className="h-16 w-16 bg-brand-black border border-white/10 flex items-center justify-center mb-8 group-hover:bg-brand-accent group-hover:text-brand-black transition-all duration-300 text-white relative z-10">
                     <item.icon className="h-8 w-8" />
                   </div>
                   
                   <h3 className="text-3xl font-heading text-white mb-4 tracking-wide relative z-10">{item.title}</h3>
-                  <p className="text-gray-400 leading-relaxed font-light relative z-10 group-hover:text-gray-300 transition-colors">{item.desc}</p>
+                  <p className="text-gray-400 leading-relaxed font-light relative z-10 group-hover:text-gray-200 transition-colors">{item.desc}</p>
                 </div>
               </ScrollReveal>
             ))}
@@ -209,6 +252,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
 
       {/* CTA Section */}
       <section className="py-32 bg-brand-accent relative overflow-hidden">

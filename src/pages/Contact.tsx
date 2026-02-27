@@ -54,13 +54,14 @@ export default function Contact() {
               e.preventDefault();
               const formData = new FormData(e.currentTarget);
               const data = Object.fromEntries(formData);
-              const message = `*Website Contact Form*\n\n` +
-                `*Name:* ${data.firstName} ${data.lastName}\n` +
-                `*Email:* ${data.email}\n` +
-                `*Message:* ${data.message}`;
               
-              const url = `https://wa.me/254743040404?text=${encodeURIComponent(message)}`;
-              window.open(url, '_blank');
+              const subject = `Website Contact Form: ${data.firstName} ${data.lastName}`;
+              const body = `Name: ${data.firstName} ${data.lastName}\n` +
+                `Email: ${data.email}\n\n` +
+                `Message:\n${data.message}`;
+              
+              const mailtoUrl = `mailto:info@nyalicrossfitgym.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+              window.location.href = mailtoUrl;
             }}
             className="space-y-6"
           >
@@ -82,7 +83,7 @@ export default function Contact() {
               <label className="block text-sm font-medium text-gray-400 mb-2">Message</label>
               <textarea required name="message" rows={4} className="w-full bg-brand-charcoal border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-accent transition-colors" placeholder="Tell us about your fitness goals..." />
             </div>
-            <Button type="submit" size="lg" className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white border-none">Send Message via WhatsApp</Button>
+            <Button type="submit" size="lg" className="w-full bg-brand-accent hover:bg-white hover:text-brand-black text-brand-black border-none font-bold">Send Message</Button>
           </form>
         </div>
 

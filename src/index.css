@@ -7,8 +7,8 @@
   
   --color-brand-black: #0B0B0B;
   --color-brand-charcoal: #121212;
-  --color-brand-accent: #FF4D2D; /* Orange Accent */
-  --color-brand-accent-hover: #E03E20;
+  --color-brand-accent: #ec2127; /* Red Accent */
+  --color-brand-accent-hover: #c91b20;
 }
 
 @layer base {

@@ -26,7 +26,7 @@ export function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'Classes', path: '/schedule' },
     { name: 'Membership', path: '/pricing' },
-    { name: 'Community', path: '/community' },
+    { name: 'Our Facility', path: '/community' },
     { name: 'Contact', path: '/contact' },
   ];
 
