@@ -23,7 +23,7 @@ export default function Home() {
             className="w-full h-full object-cover scale-110"
             poster="https://images.unsplash.com/photo-1574680096141-1cddd32e04ca?q=80&w=2070&auto=format&fit=crop"
           >
-            <source src="https://mclinic.co.ke/wp-content/uploads/2026/02/Hreo-image.mp4" type="video/mp4" />
+            <source src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Video-2026-02-23-at-12.06.50.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -42,8 +42,7 @@ export default function Home() {
           </motion.div>
 
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-heading font-normal text-white mb-8 leading-[0.85] tracking-tight">
-            <TextReveal text="FORGE STRENGTH" className="justify-center" />
-            <TextReveal text="BUILD DISCIPLINE" className="justify-center text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-white" />
+            <TextReveal text="Building better humans" className="justify-center text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-white" />
           </h1>
 
           <ScrollReveal delay={0.4}>
@@ -86,10 +85,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 border-y border-white/10 py-12">
             {[
-              { label: "Active Members", value: 500, suffix: "+" },
+              { label: "Active Members", value: 250, suffix: "+" },
               { label: "Expert Coaches", value: 12, suffix: "" },
-              { label: "Classes Weekly", value: 45, suffix: "+" },
-              { label: "Years Strong", value: 5, suffix: "" },
+              { label: "Classes Weekly", value: 50, suffix: "+" },
+              { label: "Years Strong", value: 2, suffix: "" },
             ].map((stat, index) => (
               <ScrollReveal key={index} delay={index * 0.1} className="text-center">
                 <div className="text-4xl md:text-6xl font-heading text-white mb-2">
@@ -166,13 +165,13 @@ export default function Home() {
             {[
               {
                 title: "CrossFit Group",
-                image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1469&auto=format&fit=crop",
+                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.15.jpeg",
                 desc: "High-intensity functional movement. The core of what we do."
               },
               {
-                title: "Personal Training",
-                image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop",
-                desc: "1-on-1 coaching tailored specifically to your unique goals."
+                title: "Community",
+                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.05.17.jpeg",
+                desc: "Train with a tribe that pushes you to be your best."
               },
               {
                 title: "Spinning",
@@ -197,9 +196,6 @@ export default function Home() {
                     <p className="text-gray-300 text-base mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100 font-light leading-relaxed">
                       {program.desc}
                     </p>
-                    <span className="text-brand-accent text-sm font-bold uppercase tracking-wider flex items-center group-hover:translate-x-2 transition-transform duration-300">
-                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                    </span>
                   </div>
                 </div>
               </ScrollReveal>

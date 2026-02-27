@@ -5,32 +5,32 @@ import { MOCK_COACHES } from '@/lib/supabase';
 export default function Community() {
   const galleryImages = [
     {
-      src: "https://images.unsplash.com/photo-1574680096141-1cddd32e04ca?q=80&w=2070&auto=format&fit=crop",
+      src: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.05.17.jpeg",
       alt: "Community Workout",
       category: "Community"
     },
     {
-      src: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop",
+      src: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.16.jpeg",
       alt: "Gym Facility",
       category: "Facilities"
     },
     {
-      src: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1469&auto=format&fit=crop",
+      src: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.15-2.jpeg",
       alt: "Group Class",
       category: "Community"
     },
     {
-      src: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=1470&auto=format&fit=crop",
+      src: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.15-1.jpeg",
       alt: "Weightlifting Area",
       category: "Facilities"
     },
     {
-      src: "https://images.unsplash.com/photo-1591311630200-ffa9120a540f?q=80&w=1413&auto=format&fit=crop",
+      src: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.15.jpeg",
       alt: "Spinning Class",
       category: "Community"
     },
     {
-      src: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=1000&auto=format&fit=crop",
+      src: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.14.jpeg",
       alt: "Outdoor Training",
       category: "Facilities"
     }
@@ -60,17 +60,32 @@ export default function Community() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        {/* Row 1: Video and Coaches */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
-          {/* Left Column: Video */}
+        {/* Row 1: Mission and Video */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-center">
+          {/* Left Column: Mission */}
           <div>
             <ScrollReveal>
               <div className="mb-8">
-                <h2 className="text-4xl font-heading text-white mb-4">Experience the Energy</h2>
-                <p className="text-gray-400">
-                  Check out what happens inside our walls. From daily WODs to special events, there's always something happening at Nyali Crossfit & Gym.
-                </p>
+                <h2 className="text-4xl font-heading text-white mb-6">OUR MISSION</h2>
+                <div className="space-y-6 text-gray-400 leading-relaxed text-lg">
+                  <p>
+                    At Nyalicrossfit & Gym, our mission is to build a stronger, healthier community through high-performance training, premium facilities, and an environment that inspires consistency and growth.
+                  </p>
+                  <p>
+                    We exist to provide elite-level equipment, expert coaching, and a motivating atmosphere where beginners feel welcome and athletes feel challenged. Every space we create is designed to help people move better, train smarter, and unlock their full potential — physically and mentally.
+                  </p>
+                  <div className="pt-4 border-l-4 border-brand-accent pl-6">
+                    <p className="font-heading text-2xl text-white mb-2">We are more than a gym.</p>
+                    <p className="text-brand-accent font-bold uppercase tracking-wider">We are a culture of discipline, resilience, and progress.</p>
+                  </div>
+                </div>
               </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Right Column: Video */}
+          <div>
+            <ScrollReveal>
               <div className="w-full bg-brand-charcoal rounded-xl overflow-hidden border border-white/10 shadow-2xl sticky top-24">
                 <video 
                   src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Video-2026-02-23-at-11.54.13-2.mp4" 
@@ -84,45 +99,6 @@ export default function Community() {
                 >
                   Your browser does not support the video tag.
                 </video>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          {/* Right Column: Meet the Coaches */}
-          <div>
-            <ScrollReveal>
-              <div className="mb-8">
-                <h2 className="text-4xl font-heading text-white mb-4">Meet Our Coaches</h2>
-                <p className="text-gray-400">
-                  Our team of expert coaches is dedicated to helping you reach your fitness goals.
-                </p>
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {MOCK_COACHES.map((coach, idx) => (
-                  <motion.div 
-                    key={coach.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-brand-charcoal rounded-xl overflow-hidden border border-white/5 hover:border-brand-accent/50 transition-colors group"
-                  >
-                    <div className="aspect-[4/5] overflow-hidden relative">
-                      <img 
-                        src={coach.image} 
-                        alt={coach.name} 
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-60" />
-                    </div>
-                    <div className="p-4">
-                      <h3 className="text-xl font-heading text-white mb-1">{coach.name}</h3>
-                      <p className="text-brand-accent text-xs font-bold uppercase tracking-wider mb-2">{coach.specialty}</p>
-                      <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">{coach.bio}</p>
-                    </div>
-                  </motion.div>
-                ))}
               </div>
             </ScrollReveal>
           </div>
