@@ -37,7 +37,7 @@ export default function Home() {
           >
             <span className="inline-flex items-center py-1 px-4 border border-brand-accent/50 rounded-full bg-brand-accent/10 text-brand-accent text-sm font-bold tracking-widest uppercase backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-brand-accent mr-2 animate-pulse" />
-              Nyali's Premier Training Facility
+              Nyali Crossfit & Gym
             </span>
           </motion.div>
 
@@ -69,7 +69,7 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div
+        <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white/50"
@@ -161,25 +161,25 @@ export default function Home() {
             ].map((item, index) => (
               <ScrollReveal key={index} delay={index * 0.2}>
                 <div className="bg-brand-charcoal p-10 rounded-none border border-white/5 hover:border-brand-accent transition-all duration-500 group h-full relative overflow-hidden">
-
+                  
                   {/* Background Image */}
                   <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-70 transition-opacity duration-500">
-                    <img
-                      src={item.image}
-                      alt={item.title}
+                    <img 
+                      src={item.image} 
+                      alt={item.title} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                     />
                   </div>
-
+                  
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 z-0 bg-gradient-to-b from-brand-charcoal/50 to-brand-black/80 pointer-events-none" />
 
                   <div className="absolute top-0 right-0 w-24 h-24 bg-brand-accent/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500 z-0" />
-
+                  
                   <div className="h-16 w-16 bg-brand-black border border-white/10 flex items-center justify-center mb-8 group-hover:bg-brand-accent group-hover:text-brand-black transition-all duration-300 text-white relative z-10">
                     <item.icon className="h-8 w-8" />
                   </div>
-
+                  
                   <h3 className="text-3xl font-heading text-white mb-4 tracking-wide relative z-10">{item.title}</h3>
                   <p className="text-gray-400 leading-relaxed font-light relative z-10 group-hover:text-gray-200 transition-colors">{item.desc}</p>
                 </div>
@@ -192,9 +192,17 @@ export default function Home() {
       {/* Programs Preview */}
       <section className="py-24 bg-brand-charcoal relative overflow-hidden">
         <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[100px]" />
-
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+            <ScrollReveal>
+              <h2 className="text-5xl md:text-7xl font-heading text-white mb-4 tracking-wide">Our Programs</h2>
+              <p className="text-gray-400 font-light text-lg">Find the perfect class for your goals</p>
+            </ScrollReveal>
+            <Link to="/classes" className="hidden md:block">
+              <Button variant="outline" className="mt-4 md:mt-0 border-white/20 hover:border-brand-accent">View All Programs <ArrowRight className="ml-2 h-4 w-4" /></Button>
+            </Link>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -217,14 +225,14 @@ export default function Home() {
               <ScrollReveal key={idx} delay={idx * 0.2}>
                 <div className="group relative h-[500px] overflow-hidden cursor-pointer bg-brand-black border border-white/5">
                   <div className="absolute inset-0 overflow-hidden">
-                    <img
-                      src={program.image}
-                      alt={program.title}
+                    <img 
+                      src={program.image} 
+                      alt={program.title} 
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent opacity-90 group-hover:opacity-80 transition-opacity" />
-
+                  
                   <div className="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     <div className="w-12 h-1 bg-brand-accent mb-6 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                     <h3 className="text-4xl font-heading text-white mb-4 tracking-wide">{program.title}</h3>
@@ -236,8 +244,12 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
-
-
+          
+          <div className="mt-12 text-center md:hidden">
+            <Link to="/classes">
+              <Button variant="outline" className="w-full">View All Programs</Button>
+            </Link>
+          </div>
         </div>
       </section>
 
