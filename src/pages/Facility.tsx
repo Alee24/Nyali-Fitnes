@@ -1,12 +1,30 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { ScrollReveal } from '@/components/Animations';
 import { MOCK_COACHES } from '@/lib/supabase';
-import { ChevronRight, X } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
+import { BookingModal, BookingDetails } from '@/components/BookingModal';
 
 export default function Facility() {
+  const [selectedPlan, setSelectedPlan] = useState<BookingDetails | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleBooking = (title: string, price: string) => {
+    setSelectedPlan({
+      title,
+      subtitle: price,
+      type: 'Membership'
+    });
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="pt-20 min-h-screen bg-brand-black">
+      <BookingModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        bookingDetails={selectedPlan} 
+      />
       <div className="bg-brand-charcoal py-24 border-b border-white/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -23,7 +41,7 @@ export default function Facility() {
             transition={{ delay: 0.2 }}
             className="text-xl text-gray-400 max-w-2xl mx-auto font-light"
           >
-            World-class equipment. Expert coaching. Unmatched atmosphere.
+            More than just a gym. We are a family united by fitness.
           </motion.p>
         </div>
       </div>
@@ -88,7 +106,7 @@ export default function Facility() {
               <div className="bg-black border-2 border-white flex flex-col items-center text-center p-0 hover:border-brand-accent transition-colors duration-300">
                 <div className="p-10 flex flex-col items-center w-full flex-grow">
                   <h3 className="text-5xl font-heading text-white mb-2 tracking-wide">BASIC</h3>
-                  <p className="text-xl font-bold text-white mb-8 uppercase tracking-wider">STARTING AT KSh 6,000</p>
+                  <p className="text-xl font-bold text-white mb-8 uppercase tracking-wider">STARTING AT KSh 11,000</p>
                   
                   <ul className="space-y-3 text-white mb-8">
                     {['Gym Access', 'CrossFit Classes', 'Sauna Access'].map((item, idx) => (
@@ -99,9 +117,12 @@ export default function Facility() {
                     ))}
                   </ul>
                 </div>
-                <a href="/pricing" className="w-full bg-white text-black font-heading text-2xl py-4 hover:bg-gray-200 transition-colors uppercase tracking-wide block">
+                <button 
+                  onClick={() => handleBooking('Basic Membership', 'Starting at KSh 11,000')}
+                  className="w-full bg-white text-black font-heading text-2xl py-4 hover:bg-gray-200 transition-colors uppercase tracking-wide block cursor-pointer"
+                >
                   Enquire Now
-                </a>
+                </button>
               </div>
 
               {/* Premium Package */}
@@ -110,7 +131,7 @@ export default function Facility() {
                   <div className="bg-brand-accent text-white px-4 py-1 mb-2 transform -skew-x-12">
                     <h3 className="text-5xl font-heading tracking-wide transform skew-x-12">PREMIUM</h3>
                   </div>
-                  <p className="text-xl font-bold text-white mb-8 uppercase tracking-wider">STARTING AT KSh 11,000</p>
+                  <p className="text-xl font-bold text-white mb-8 uppercase tracking-wider">STARTING AT KSh 13,000</p>
                   
                   <ul className="space-y-3 text-white mb-8">
                     {['Gym Access', 'CrossFit Classes', 'Spin Classes', 'Sauna Access'].map((item, idx) => (
@@ -121,9 +142,12 @@ export default function Facility() {
                     ))}
                   </ul>
                 </div>
-                <a href="/pricing" className="w-full bg-white text-black font-heading text-2xl py-4 hover:bg-gray-200 transition-colors uppercase tracking-wide block">
+                <button 
+                  onClick={() => handleBooking('Premium Membership', 'Starting at KSh 13,000')}
+                  className="w-full bg-white text-black font-heading text-2xl py-4 hover:bg-gray-200 transition-colors uppercase tracking-wide block cursor-pointer"
+                >
                   Enquire Now
-                </a>
+                </button>
               </div>
             </div>
           </ScrollReveal>

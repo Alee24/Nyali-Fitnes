@@ -196,12 +196,9 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <ScrollReveal>
-              <h2 className="text-5xl md:text-7xl font-heading text-white mb-4 tracking-wide">Our Programs</h2>
               <p className="text-gray-400 font-light text-lg">Find the perfect class for your goals</p>
             </ScrollReveal>
-            <Link to="/classes" className="hidden md:block">
-              <Button variant="outline" className="mt-4 md:mt-0 border-white/20 hover:border-brand-accent">View All Programs <ArrowRight className="ml-2 h-4 w-4" /></Button>
-            </Link>
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -218,7 +215,7 @@ export default function Home() {
               },
               {
                 title: "Spinning",
-                image: "https://images.unsplash.com/photo-1591311630200-ffa9120a540f?q=80&w=1413&auto=format&fit=crop",
+                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-28-at-08.55.47.jpeg",
                 desc: "Endurance focused indoor cycling sessions to build your engine."
               }
             ].map((program, idx) => (
@@ -245,11 +242,7 @@ export default function Home() {
             ))}
           </div>
           
-          <div className="mt-12 text-center md:hidden">
-            <Link to="/classes">
-              <Button variant="outline" className="w-full">View All Programs</Button>
-            </Link>
-          </div>
+
         </div>
       </section>
 
