@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Dumbbell } from 'lucide-react';
+import { Menu, X, Dumbbell, Instagram, Youtube } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
@@ -31,7 +31,7 @@ export function Navbar() {
   ];
 
   return (
-    <nav 
+    <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 bg-brand-black border-b border-white/10 py-2",
         scrolled ? "shadow-lg" : ""
@@ -41,15 +41,16 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <img 
-              src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg" 
-              alt="Nyali Crossfit & Gym Logo" 
-              className="h-12 w-auto object-contain" 
+            <img
+              src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg"
+              alt="Nyali Crossfit & Gym Logo"
+              className="h-12 w-auto object-contain"
             />
             <div className="hidden sm:flex flex-col">
               <span className="font-heading text-2xl font-bold tracking-wider text-white leading-none">
                 NYALI <span className="text-brand-accent">CROSSFIT & GYM</span>
               </span>
+              <span className="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-medium mt-1">Building better humans</span>
             </div>
           </Link>
 
@@ -125,10 +126,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img 
-                src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg" 
-                alt="Nyali Crossfit & Gym Logo" 
-                className="h-12 w-auto object-contain" 
+              <img
+                src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg"
+                alt="Nyali Crossfit & Gym Logo"
+                className="h-12 w-auto object-contain"
               />
               <div className="flex flex-col">
                 <span className="font-heading text-xl font-bold tracking-wider text-white">
@@ -140,8 +141,21 @@ export function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed">
               Forging elite fitness in Mombasa. Join our community of dedicated athletes and transform your life through functional movement.
             </p>
+            <div className="flex items-center space-x-4 pt-2">
+              <a href="https://www.instagram.com/nyalicrossfitgym/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-accent transition-colors">
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a href="https://www.youtube.com/@NyaliCrossfitandGym" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-accent transition-colors">
+                <Youtube className="h-5 w-5" />
+              </a>
+              <a href="https://www.tiktok.com/@nyalicrossfitgym" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-accent transition-colors">
+                <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.04-.1z" />
+                </svg>
+              </a>
+            </div>
           </div>
-          
+
           <div>
             <h3 className="text-white font-heading text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm text-gray-400">
@@ -175,11 +189,11 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        
+
         <div className="mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-600 flex flex-col items-center gap-2">
           <span>&copy; {new Date().getFullYear()} Nyali Crossfit & Gym. All rights reserved.</span>
           <span>
-            Developed by <a href="https://www.kkdes.co.ke" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">KKDES</a>
+            Developed by | <a href="https://kkdes.co.ke/" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">KKDES</a>
           </span>
         </div>
       </div>
