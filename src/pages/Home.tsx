@@ -144,7 +144,7 @@ export default function Home() {
                 icon: Trophy,
                 title: "Expert Coaching",
                 desc: "Our certified coaches guide every movement to ensure safety and maximize your results.",
-                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.15-1.jpeg"
+                image: "https://mclinic.co.ke/wp-content/uploads/2026/03/WhatsApp-Image-2026-02-28-at-15.05.03.jpeg"
               },
               {
                 icon: Users,
@@ -156,7 +156,7 @@ export default function Home() {
                 icon: Flame,
                 title: "Results Driven",
                 desc: "Proven programming that builds functional strength, endurance, and mental toughness.",
-                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.16.jpeg"
+                image: "https://mclinic.co.ke/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-01-at-16.05.50.jpeg"
               }
             ].map((item, index) => (
               <ScrollReveal key={index} delay={index * 0.2}>
