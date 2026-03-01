@@ -136,7 +136,6 @@ export function Footer() {
                 <span className="font-heading text-xl font-bold tracking-wider text-white">
                   NYALI <span className="text-brand-accent">CROSSFIT & GYM</span>
                 </span>
-                <span className="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-medium mt-1">Building better humans</span>
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
