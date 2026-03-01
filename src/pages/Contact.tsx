@@ -7,7 +7,7 @@ export default function Contact() {
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-80px)]">
         <div className="p-8 md:p-16 lg:p-24 flex flex-col justify-center">
           <img
-            src="/images/image.png"
+            src="/images/logo.jpeg"
             alt="Nyali Crossfit & Gym Logo"
             className="h-24 w-auto object-contain mb-8"
           />

@@ -42,7 +42,7 @@ export function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <img
-              src="/images/image.png"
+              src="/images/logo.jpeg"
               alt="Nyali Crossfit & Gym Logo"
               className="h-12 w-auto object-contain"
             />
@@ -126,7 +126,7 @@ export function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <img
-                src="/images/image.png"
+                src="/images/logo.jpeg"
                 alt="Nyali Crossfit & Gym Logo"
                 className="h-12 w-auto object-contain"
               />
