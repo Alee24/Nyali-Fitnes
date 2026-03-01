@@ -31,7 +31,7 @@ export function Navbar() {
   ];
 
   return (
-    <nav 
+    <nav
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 bg-brand-black border-b border-white/10 py-2",
         scrolled ? "shadow-lg" : ""
@@ -41,11 +41,10 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
-            <img 
-              src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg" 
-              alt="Nyali Crossfit & Gym Logo" 
-              className="h-12 w-auto object-contain" 
-              referrerPolicy="no-referrer"
+            <img
+              src="/images/image.png"
+              alt="Nyali Crossfit & Gym Logo"
+              className="h-12 w-auto object-contain"
             />
             <div className="hidden sm:flex flex-col">
               <span className="font-heading text-2xl font-bold tracking-wider text-white leading-none">
@@ -126,11 +125,10 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img 
-                src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg" 
-                alt="Nyali Crossfit & Gym Logo" 
-                className="h-12 w-auto object-contain" 
-                referrerPolicy="no-referrer"
+              <img
+                src="/images/image.png"
+                alt="Nyali Crossfit & Gym Logo"
+                className="h-12 w-auto object-contain"
               />
               <div className="flex flex-col">
                 <span className="font-heading text-xl font-bold tracking-wider text-white">
@@ -143,7 +141,7 @@ export function Footer() {
               Forging elite fitness in Mombasa. Join our community of dedicated athletes and transform your life through functional movement.
             </p>
           </div>
-          
+
           <div>
             <h3 className="text-white font-heading text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm text-gray-400">
@@ -177,7 +175,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        
+
         <div className="mt-12 pt-8 border-t border-white/5 text-center text-xs text-gray-600 flex flex-col items-center gap-2">
           <span>&copy; {new Date().getFullYear()} Nyali Crossfit & Gym. All rights reserved.</span>
           <span>

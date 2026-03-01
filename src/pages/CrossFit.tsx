@@ -14,14 +14,14 @@ export default function CrossFit() {
       <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <motion.div style={{ y: y1 }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-brand-black/60 z-10" />
-          <img 
-            src="https://mclinic.co.ke/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-01-at-11.23.29.jpeg" 
-            alt="CrossFit Training" 
+          <img
+            src="/images/WhatsApp Image 2026-03-01 at 11.23.29.jpeg"
+            alt="CrossFit Training"
             className="w-full h-full object-cover"
           />
         </motion.div>
         <div className="relative z-20 max-w-7xl mx-auto px-4 text-center">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -29,7 +29,7 @@ export default function CrossFit() {
           >
             CrossFit <span className="text-brand-accent">Training</span>
           </motion.h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -51,7 +51,7 @@ export default function CrossFit() {
               At Nyali Crossfit & Gym, classes are coach-guided and beginner friendly.
             </p>
           </ScrollReveal>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
             <ScrollReveal delay={0.2}>
               <div className="bg-brand-charcoal p-10 border border-white/5 hover:border-brand-accent transition-colors duration-300 h-full">
@@ -90,7 +90,7 @@ export default function CrossFit() {
           <ScrollReveal delay={0.6}>
             <div className="mt-16 p-8 bg-brand-accent/5 border border-brand-accent/20">
               <p className="text-xl text-white font-light">
-                All movements are scalable — meaning you do not need to be fit before starting. 
+                All movements are scalable — meaning you do not need to be fit before starting.
                 <span className="block mt-4 text-brand-accent font-heading text-4xl tracking-wide">You only need to start.</span>
               </p>
             </div>
@@ -127,12 +127,12 @@ export default function CrossFit() {
                 </Link>
               </div>
             </ScrollReveal>
-            
+
             <ScrollReveal delay={0.3}>
               <div className="relative h-[600px] overflow-hidden group">
-                <img 
-                  src="https://mclinic.co.ke/wp-content/uploads/2026/03/WhatsApp-Image-2026-02-28-at-15.05.03.jpeg" 
-                  alt="Diverse Group Training" 
+                <img
+                  src="/images/WhatsApp Image 2026-02-28 at 15.05.03.jpeg"
+                  alt="Diverse Group Training"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-black/90 via-transparent to-transparent" />

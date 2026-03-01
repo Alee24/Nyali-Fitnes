@@ -6,14 +6,13 @@ export default function Contact() {
     <div className="pt-20 min-h-screen bg-brand-black">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-80px)]">
         <div className="p-8 md:p-16 lg:p-24 flex flex-col justify-center">
-          <img 
-            src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg" 
-            alt="Nyali Crossfit & Gym Logo" 
-            className="h-24 w-auto object-contain mb-8" 
-            referrerPolicy="no-referrer"
+          <img
+            src="/images/image.png"
+            alt="Nyali Crossfit & Gym Logo"
+            className="h-24 w-auto object-contain mb-8"
           />
           <h1 className="text-5xl font-heading font-bold text-white mb-8">Get In Touch</h1>
-          
+
           <div className="space-y-8 mb-12">
             <div className="flex items-start">
               <div className="bg-brand-charcoal p-3 rounded-lg mr-4">
@@ -50,17 +49,17 @@ export default function Contact() {
             </div>
           </div>
 
-          <form 
+          <form
             onSubmit={(e) => {
               e.preventDefault();
               const formData = new FormData(e.currentTarget);
               const data = Object.fromEntries(formData);
-              
+
               const subject = `Website Contact Form: ${data.firstName} ${data.lastName}`;
               const body = `Name: ${data.firstName} ${data.lastName}\n` +
                 `Email: ${data.email}\n\n` +
                 `Message:\n${data.message}`;
-              
+
               const mailtoUrl = `mailto:info@nyalicrossfitgym.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
               window.location.href = mailtoUrl;
             }}
@@ -90,16 +89,16 @@ export default function Contact() {
 
         {/* Map */}
         <div className="bg-brand-charcoal relative h-96 lg:h-auto">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.957646698664!2d39.6994!3d-4.0355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e5c74768d9%3A0x6b8f3e2b2b2b2b2b!2sPromenade%20Mall!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)' }} 
-            allowFullScreen 
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.957646698664!2d39.6994!3d-4.0355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012e5c74768d9%3A0x6b8f3e2b2b2b2b2b!2sPromenade%20Mall!5e0!3m2!1sen!2ske!4v1620000000000!5m2!1sen!2ske"
+            width="100%"
+            height="100%"
+            style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)' }}
+            allowFullScreen
             loading="lazy"
             title="Gym Location"
           />
-          
+
           <div className="absolute bottom-8 left-8 bg-brand-black/90 backdrop-blur p-6 rounded-xl border border-white/10 max-w-xs">
             <h4 className="text-white font-heading font-bold mb-2 flex items-center"><Clock className="h-4 w-4 text-brand-accent mr-2" /> Opening Hours</h4>
             <div className="text-sm text-gray-400 space-y-1">

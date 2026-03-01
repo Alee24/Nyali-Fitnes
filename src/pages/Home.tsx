@@ -23,7 +23,7 @@ export default function Home() {
             className="w-full h-full object-cover scale-110"
             poster="https://images.unsplash.com/photo-1574680096141-1cddd32e04ca?q=80&w=2070&auto=format&fit=crop"
           >
-            <source src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Video-2026-02-23-at-12.06.50.mp4" type="video/mp4" />
+            <source src="/images/WhatsApp Video 2026-02-23 at 11.54.13 (1).mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -69,7 +69,7 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div 
+        <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white/50"
@@ -144,42 +144,42 @@ export default function Home() {
                 icon: Trophy,
                 title: "Expert Coaching",
                 desc: "Our certified coaches guide every movement to ensure safety and maximize your results.",
-                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.15-1.jpeg"
+                image: "/images/WhatsApp Image 2026-02-26 at 09.09.15 (1).jpeg"
               },
               {
                 icon: Users,
                 title: "Community Support",
                 desc: "Train with a tribe that pushes you to be your best. We sweat, struggle, and succeed together.",
-                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.05.17.jpeg"
+                image: "/images/WhatsApp Image 2026-02-26 at 09.05.17.jpeg"
               },
               {
                 icon: Flame,
                 title: "Results Driven",
                 desc: "Proven programming that builds functional strength, endurance, and mental toughness.",
-                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.16.jpeg"
+                image: "/images/WhatsApp Image 2026-02-26 at 09.09.16.jpeg"
               }
             ].map((item, index) => (
               <ScrollReveal key={index} delay={index * 0.2}>
                 <div className="bg-brand-charcoal p-10 rounded-none border border-white/5 hover:border-brand-accent transition-all duration-500 group h-full relative overflow-hidden">
-                  
+
                   {/* Background Image */}
                   <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-70 transition-opacity duration-500">
-                    <img 
-                      src={item.image} 
-                      alt={item.title} 
+                    <img
+                      src={item.image}
+                      alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                     />
                   </div>
-                  
+
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 z-0 bg-gradient-to-b from-brand-charcoal/50 to-brand-black/80 pointer-events-none" />
 
                   <div className="absolute top-0 right-0 w-24 h-24 bg-brand-accent/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500 z-0" />
-                  
+
                   <div className="h-16 w-16 bg-brand-black border border-white/10 flex items-center justify-center mb-8 group-hover:bg-brand-accent group-hover:text-brand-black transition-all duration-300 text-white relative z-10">
                     <item.icon className="h-8 w-8" />
                   </div>
-                  
+
                   <h3 className="text-3xl font-heading text-white mb-4 tracking-wide relative z-10">{item.title}</h3>
                   <p className="text-gray-400 leading-relaxed font-light relative z-10 group-hover:text-gray-200 transition-colors">{item.desc}</p>
                 </div>
@@ -192,7 +192,7 @@ export default function Home() {
       {/* Programs Preview */}
       <section className="py-24 bg-brand-charcoal relative overflow-hidden">
         <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[100px]" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <ScrollReveal>
@@ -205,32 +205,32 @@ export default function Home() {
             {[
               {
                 title: "CrossFit Group",
-                image: "https://mclinic.co.ke/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-01-at-11.23.29.jpeg",
+                image: "/images/WhatsApp Image 2026-03-01 at 11.23.29.jpeg",
                 desc: "High-intensity functional movement. The core of what we do."
               },
               {
                 title: "Community",
-                image: "https://mclinic.co.ke/wp-content/uploads/2026/03/WhatsApp-Image-2026-02-28-at-15.05.03.jpeg",
+                image: "/images/WhatsApp Image 2026-02-28 at 15.05.03.jpeg",
                 desc: "Train with a tribe that pushes you to be your best."
               },
               {
                 title: "Spinning",
-                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-28-at-08.55.47.jpeg",
+                image: "/images/WhatsApp Image 2026-02-28 at 08.55.47.jpeg",
                 desc: "Endurance focused indoor cycling sessions to build your engine."
               }
             ].map((program, idx) => (
               <ScrollReveal key={idx} delay={idx * 0.2}>
                 <div className="group relative h-[500px] overflow-hidden cursor-pointer bg-gray-900 border border-white/5">
                   <div className="absolute inset-0 overflow-hidden">
-                    <img 
-                      src={program.image} 
-                      alt={program.title} 
+                    <img
+                      src={program.image}
+                      alt={program.title}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                  
+
                   <div className="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     <div className="w-12 h-1 bg-brand-accent mb-6 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                     <h3 className="text-4xl font-heading text-white mb-4 tracking-wide">{program.title}</h3>
@@ -242,7 +242,7 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
-          
+
 
         </div>
       </section>
