@@ -29,6 +29,11 @@ function ScrollToTop() {
 
 export default function App() {
   const { pathname } = useLocation();
+  
+  useEffect(() => {
+    document.title = "Nyali Crossfit & Gym";
+  }, []);
+
   // Hide Navbar/Footer on login/dashboard/admin for a cleaner app-like feel
   const isAppRoute = ['/login', '/dashboard', '/admin'].some(route => pathname.startsWith(route));
 
