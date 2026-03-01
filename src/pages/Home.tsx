@@ -196,7 +196,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <ScrollReveal>
-              <p className="text-gray-400 font-light text-lg">Find the perfect class for your goals</p>
+              <h2 className="text-4xl md:text-5xl font-heading text-white mb-6 tracking-wide">Find the perfect class for your goals</h2>
             </ScrollReveal>
 
           </div>
@@ -205,12 +205,12 @@ export default function Home() {
             {[
               {
                 title: "CrossFit Group",
-                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.09.15.jpeg",
+                image: "https://mclinic.co.ke/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-01-at-11.23.29.jpeg",
                 desc: "High-intensity functional movement. The core of what we do."
               },
               {
                 title: "Community",
-                image: "https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-26-at-09.05.17.jpeg",
+                image: "https://mclinic.co.ke/wp-content/uploads/2026/03/WhatsApp-Image-2026-02-28-at-15.05.03.jpeg",
                 desc: "Train with a tribe that pushes you to be your best."
               },
               {
