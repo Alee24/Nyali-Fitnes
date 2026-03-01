@@ -53,7 +53,7 @@ const WEEKLY_TEMPLATE: { [key: number]: any[] } = {
     { id: 'wed-3', title: 'CrossFit', start_time: '07:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Crossfit Floor', intensity: 'High' },
     { id: 'wed-4', title: 'Female Only CrossFit', start_time: '08:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Crossfit Floor', intensity: 'Medium' },
     { id: 'wed-5', title: 'Female Only CrossFit', start_time: '10:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Crossfit Floor', intensity: 'Medium' },
-    { id: 'wed-6', title: 'Female Only Upper Body', start_time: '11:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Crossfit Floor', intensity: 'Medium' },
+    { id: 'wed-6', title: 'Female Only Mobility Class', start_time: '11:30', duration_minutes: 60, coach: 'Gym Instructor', location: 'Crossfit Floor', intensity: 'Medium' },
     { id: 'wed-7', title: 'CrossFit', start_time: '14:45', duration_minutes: 60, coach: 'Gym Instructor', location: 'Crossfit Floor', intensity: 'High' },
     { id: 'wed-8', title: 'CrossFit', start_time: '16:00', duration_minutes: 60, coach: 'Gym Instructor', location: 'Crossfit Floor', intensity: 'High' },
     { id: 'wed-9', title: 'Introduction', start_time: '17:00', duration_minutes: 30, coach: 'Gym Instructor', location: 'Intro Area', intensity: 'Low' },
