@@ -225,10 +225,10 @@ export default function Home() {
                     <img 
                       src={program.image} 
                       alt={program.title} 
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent opacity-90 group-hover:opacity-80 transition-opacity" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
                   
                   <div className="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     <div className="w-12 h-1 bg-brand-accent mb-6 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />

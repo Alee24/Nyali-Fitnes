@@ -45,6 +45,7 @@ export function Navbar() {
               src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg" 
               alt="Nyali Crossfit & Gym Logo" 
               className="h-12 w-auto object-contain" 
+              referrerPolicy="no-referrer"
             />
             <div className="hidden sm:flex flex-col">
               <span className="font-heading text-2xl font-bold tracking-wider text-white leading-none">
@@ -129,6 +130,7 @@ export function Footer() {
                 src="https://mclinic.co.ke/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-23-at-12.19.33-e1771950026733.jpeg" 
                 alt="Nyali Crossfit & Gym Logo" 
                 className="h-12 w-auto object-contain" 
+                referrerPolicy="no-referrer"
               />
               <div className="flex flex-col">
                 <span className="font-heading text-xl font-bold tracking-wider text-white">

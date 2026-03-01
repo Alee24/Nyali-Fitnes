@@ -83,6 +83,7 @@ export default function Facility() {
                   playsInline
                   className="w-full h-auto object-cover"
                   poster="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop"
+                  referrerPolicy="no-referrer"
                 >
                   Your browser does not support the video tag.
                 </video>

@@ -15,7 +15,7 @@ export default function CrossFit() {
         <motion.div style={{ y: y1 }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-brand-black/60 z-10" />
           <img 
-            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop" 
+            src="https://mclinic.co.ke/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-01-at-11.23.29.jpeg" 
             alt="CrossFit Training" 
             className="w-full h-full object-cover"
           />
@@ -131,7 +131,7 @@ export default function CrossFit() {
             <ScrollReveal delay={0.3}>
               <div className="relative h-[600px] overflow-hidden group">
                 <img 
-                  src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1469&auto=format&fit=crop" 
+                  src="https://mclinic.co.ke/wp-content/uploads/2026/03/WhatsApp-Image-2026-02-28-at-15.05.03.jpeg" 
                   alt="Diverse Group Training" 
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                 />
