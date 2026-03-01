@@ -144,7 +144,7 @@ export default function Home() {
                 icon: Trophy,
                 title: "Expert Coaching",
                 desc: "Our certified coaches guide every movement to ensure safety and maximize your results.",
-                image: "/images/WhatsApp Image 2026-02-26 at 09.09.15 (1).jpeg"
+                image: "/images/WhatsApp Image 2026-02-28 at 15.05.03.jpeg"
               },
               {
                 icon: Users,
