@@ -163,7 +163,7 @@ export default function Home() {
                 <div className="bg-brand-charcoal p-10 rounded-none border border-white/5 hover:border-brand-accent transition-all duration-500 group h-full relative overflow-hidden">
                   
                   {/* Background Image */}
-                  <div className="absolute inset-0 z-0 opacity-40 group-hover:opacity-70 transition-opacity duration-500">
+                  <div className="absolute inset-0 z-0 opacity-60 group-hover:opacity-80 transition-opacity duration-500">
                     <img 
                       src={item.image} 
                       alt={item.title} 

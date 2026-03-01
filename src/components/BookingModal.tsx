@@ -30,23 +30,23 @@ export function BookingModal({ isOpen, onClose, bookingDetails }: BookingModalPr
     
     const subject = `Booking Request: ${bookingDetails.title}`;
     
-    let body = `Booking Request Details:\n\n` +
-      `Item: ${bookingDetails.title}\n`;
+    let body = `*Booking Request Details:*\n\n` +
+      `*Item:* ${bookingDetails.title}\n`;
 
     if (bookingDetails.subtitle) {
-      body += `Details: ${bookingDetails.subtitle}\n`;
+      body += `*Details:* ${bookingDetails.subtitle}\n`;
     }
     if (bookingDetails.description) {
-      body += `Info: ${bookingDetails.description}\n`;
+      body += `*Info:* ${bookingDetails.description}\n`;
     }
 
-    body += `\nAttendee Details:\n` +
-      `Name: ${formData.name}\n` +
-      `Email: ${formData.email}\n` +
-      `Phone: ${formData.phone}`;
+    body += `\n*Attendee Details:*\n` +
+      `*Name:* ${formData.name}\n` +
+      `*Email:* ${formData.email}\n` +
+      `*Phone:* ${formData.phone}`;
 
-    const mailtoUrl = `mailto:info@nyalicrossfitgym.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoUrl;
+    const whatsappUrl = `https://wa.me/254743040404?text=${encodeURIComponent(body)}`;
+    window.open(whatsappUrl, '_blank');
     onClose();
   };
 
@@ -128,8 +128,8 @@ export function BookingModal({ isOpen, onClose, bookingDetails }: BookingModalPr
                 />
               </div>
 
-              <Button type="submit" className="w-full bg-brand-accent hover:bg-white hover:text-brand-black text-brand-black border-none mt-4 font-bold">
-                Confirm Booking via Email
+              <Button type="submit" className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white border-none mt-4 font-bold">
+                Confirm Booking via WhatsApp
               </Button>
             </form>
           </div>
