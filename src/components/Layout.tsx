@@ -178,6 +178,7 @@ export function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col items-center gap-6">
+          <h3 className="text-white font-heading text-lg">Follow us on our social media</h3>
           <div className="flex items-center gap-6">
             <a 
               href="https://www.instagram.com/nyalicrossfitgym/" 
