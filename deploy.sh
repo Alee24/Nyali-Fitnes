@@ -10,8 +10,8 @@
 set -e
 
 DOMAIN="nyalicrossfitgym.com"
-EMAIL="admin@nyalicrossfitgym.com"  # Update this to your actual email for SSL renewal alerts
-APP_DIR="/var/www/ncg-app"
+EMAIL="info@nyalicrossfitgym.com"  # Update this to your actual email for SSL renewal alerts
+APP_DIR="/var/www/ncg"
 GIT_REPO="https://github.com/Alee24/Nyali-Fitnes.git"
 
 echo "======================================================="
