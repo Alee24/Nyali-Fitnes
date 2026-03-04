@@ -69,7 +69,7 @@ export default function Home() {
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div 
+        <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white/50"
@@ -161,25 +161,25 @@ export default function Home() {
             ].map((item, index) => (
               <ScrollReveal key={index} delay={index * 0.2}>
                 <div className="bg-brand-charcoal p-10 rounded-none border border-white/5 hover:border-brand-accent transition-all duration-500 group h-full relative overflow-hidden">
-                  
+
                   {/* Background Image */}
                   <div className="absolute inset-0 z-0 opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-                    <img 
-                      src={item.image} 
-                      alt={item.title} 
+                    <img
+                      src={item.image}
+                      alt={item.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0"
                     />
                   </div>
-                  
+
                   {/* Gradient Overlay */}
                   <div className="absolute inset-0 z-0 bg-gradient-to-b from-brand-charcoal/50 to-brand-black/80 pointer-events-none" />
 
                   <div className="absolute top-0 right-0 w-24 h-24 bg-brand-accent/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500 z-0" />
-                  
+
                   <div className="h-16 w-16 bg-brand-black border border-white/10 flex items-center justify-center mb-8 group-hover:bg-brand-accent group-hover:text-brand-black transition-all duration-300 text-white relative z-10">
                     <item.icon className="h-8 w-8" />
                   </div>
-                  
+
                   <h3 className="text-3xl font-heading text-white mb-4 tracking-wide relative z-10">{item.title}</h3>
                   <p className="text-gray-400 leading-relaxed font-light relative z-10 group-hover:text-gray-200 transition-colors">{item.desc}</p>
                 </div>
@@ -192,7 +192,7 @@ export default function Home() {
       {/* Programs Preview */}
       <section className="py-24 bg-brand-charcoal relative overflow-hidden">
         <div className="absolute top-0 right-0 -mr-40 -mt-40 w-[600px] h-[600px] bg-brand-accent/5 rounded-full blur-[100px]" />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16">
             <ScrollReveal>
@@ -222,15 +222,15 @@ export default function Home() {
               <ScrollReveal key={idx} delay={idx * 0.2}>
                 <div className="group relative h-[500px] overflow-hidden cursor-pointer bg-gray-900 border border-white/5">
                   <div className="absolute inset-0 overflow-hidden">
-                    <img 
-                      src={program.image} 
-                      alt={program.title} 
+                    <img
+                      src={program.image}
+                      alt={program.title}
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100"
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />
-                  
+
                   <div className="absolute bottom-0 left-0 p-8 w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     <div className="w-12 h-1 bg-brand-accent mb-6 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                     <h3 className="text-4xl font-heading text-white mb-4 tracking-wide">{program.title}</h3>
@@ -242,7 +242,7 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
-          
+
 
         </div>
       </section>
@@ -288,22 +288,22 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                name: "James K.",
+                name: "Bina.",
                 role: "Member since 2023",
-                quote: "I lost 15kg in 6 months, but more importantly, I found a community that supports me every single day. The coaching here is unmatched.",
-                image: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?q=80&w=1000&auto=format&fit=crop"
+                quote: "I found a community that supports me every single day. The coaching here is unmatched and the atmosphere is electric.",
+                image: "/images/testimonials/member1.jpeg"
               },
               {
-                name: "Sarah M.",
-                role: "Competitive Athlete",
-                quote: "Nyali Crossfit & Gym took my training to the next level. The programming is intelligent, challenging, and scalable. I've hit PRs I never thought possible.",
-                image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=1000&auto=format&fit=crop"
+                name: "Dhrupita.",
+                role: "Fitness enthusiast",
+                quote: "Nyali Crossfit & Gym took my training to the next level. The programming is intelligent, challenging, and scalable. I love every session.",
+                image: "/images/testimonials/member2.jpeg"
               },
               {
-                name: "David O.",
-                role: "Morning Crew",
-                quote: "The 6AM class is the highlight of my day. Great energy, great people, and a workout that sets me up for success at work.",
-                image: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6?q=80&w=1000&auto=format&fit=crop"
+                name: "Swaleh.",
+                role: "Fitnes enthusiast",
+                quote: "Training at Nyali Health CrossFit has played a huge role in helping me grow as a Kenyan swimmer. Providing me with a high performance environment I need to be the best I can be.",
+                image: "/images/testimonials/member3.jpeg"
               }
             ].map((testimonial, idx) => (
               <ScrollReveal key={idx} delay={idx * 0.2}>
