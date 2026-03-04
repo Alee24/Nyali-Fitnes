@@ -301,7 +301,7 @@ export default function Home() {
               },
               {
                 name: "Swaleh.",
-                role: "Fitnes enthusiast",
+                role: "Fitness enthusiast",
                 quote: "Training at Nyali Health CrossFit has played a huge role in helping me grow as a Kenyan swimmer. Providing me with a high performance environment I need to be the best I can be.",
                 image: "/images/testimonials/member3.jpeg"
               }

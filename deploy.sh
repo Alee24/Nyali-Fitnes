@@ -27,6 +27,13 @@ apt-get upgrade -y
 echo -e "\n[2 / 8] Installing Git, Curl, Nginx, and Certbot..."
 apt-get install -y git curl nginx certbot python3-certbot-nginx
 
+# Stop and disable apache2 to prevent port 80 conflicts
+if systemctl is-active --quiet apache2; then
+    echo "Stopping and disabling Apache to free up port 80 for Nginx..."
+    systemctl stop apache2
+    systemctl disable apache2
+fi
+
 # 3. Install Docker & Docker Compose if not installed
 echo -e "\n[3 / 8] Checking Docker installation..."
 if ! command -v docker &> /dev/null; then
@@ -78,7 +85,7 @@ server {
     server_name $DOMAIN www.$DOMAIN;
 
     location / {
-        proxy_pass http://127.0.0.1:9652;
+        proxy_pass http://127.0.0.1:8562;
         proxy_http_version 1.1;
         proxy_set_header Upgrade \$http_upgrade;
         proxy_set_header Connection 'upgrade';

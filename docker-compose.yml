@@ -6,7 +6,7 @@ services:
       target: dev
     container_name: ncg-dev
     ports:
-      - "6853:3000"
+      - "6985:3000"
     volumes:
       - .:/app
       - /app/node_modules
@@ -26,7 +26,7 @@ services:
       target: production
     container_name: ncg-prod
     ports:
-      - "9652:80"
+      - "8562:80"
     restart: always
     profiles:
       - prod
