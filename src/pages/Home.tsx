@@ -3,10 +3,13 @@ import { Button } from '@/components/Button';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Flame, Users, Trophy } from 'lucide-react';
 import { ScrollReveal, TextReveal, CountUp } from '@/components/Animations';
+import { FreeTrialModal } from '@/components/FreeTrialModal';
+import { useState } from 'react';
 
 export default function Home() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 500], [0, 200]);
+  const [trialOpen, setTrialOpen] = useState(false);
 
   return (
     <div className="flex flex-col min-h-screen bg-brand-black overflow-hidden">
@@ -50,11 +53,11 @@ export default function Home() {
               Join the tribe at Nyali Crossfit & Gym. Expert coaching, supportive community, and results-driven training for all fitness levels.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link to="/pricing">
+              <button onClick={() => setTrialOpen(true)}>
                 <Button size="lg" className="w-full sm:w-auto text-lg px-10 py-6 bg-brand-accent hover:bg-white hover:text-brand-black transition-all duration-300 transform hover:-translate-y-1 shadow-lg shadow-brand-accent/20">
-                  Become a Member
+                  Book a Free Trial
                 </Button>
-              </Link>
+              </button>
               <Link to="/schedule">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto text-lg px-10 py-6 border-white text-white hover:bg-white hover:text-brand-black transition-all duration-300">
                   View Schedule
@@ -79,6 +82,8 @@ export default function Home() {
           </div>
         </motion.div>
       </section>
+
+      <FreeTrialModal isOpen={trialOpen} onClose={() => setTrialOpen(false)} />
 
       {/* Stats Section */}
       <section className="py-20 bg-brand-black relative z-10">
