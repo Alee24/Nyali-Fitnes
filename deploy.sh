@@ -54,6 +54,8 @@ apt-get install -y docker-compose-plugin
 echo -e "\n[4 / 8] Fetching application code..."
 if [ ! -d "$APP_DIR/.git" ]; then
     echo "Cloning repository into $APP_DIR..."
+    # Cd out of the directory in case the user is running the script from inside it
+    cd /tmp
     rm -rf "$APP_DIR" 2>/dev/null || true
     git clone "$GIT_REPO" "$APP_DIR"
 else
