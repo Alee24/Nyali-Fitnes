@@ -72,6 +72,7 @@ cd "$APP_DIR"
 echo -e "\n[5 / 8] Building and starting Docker container (prod profile)..."
 # Stop existing container if any
 docker compose --profile prod down 2>/dev/null || true
+docker rm -f ncg-prod 2>/dev/null || true
 # Clean up unused images to save space
 docker system prune -f
 # Rebuild from scratch and start
