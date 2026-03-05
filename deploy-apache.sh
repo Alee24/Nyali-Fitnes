@@ -58,8 +58,9 @@ apt-get install -y docker-compose-plugin
 
 # 4. Clone or pull the repository
 echo -e "\n[4 / 8] Fetching application code..."
-if [ ! -d "$APP_DIR" ]; then
+if [ ! -d "$APP_DIR/.git" ]; then
     echo "Cloning repository into $APP_DIR..."
+    rm -rf "$APP_DIR" 2>/dev/null || true
     git clone "$GIT_REPO" "$APP_DIR"
 else
     echo "Repository already exists at $APP_DIR. Pulling latest changes..."
