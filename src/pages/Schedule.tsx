@@ -317,7 +317,7 @@ export default function Schedule() {
                                 <span className="text-xs font-bold tracking-wider text-gray-500">{formatDuration(session.duration_minutes)}</span>
                               </div>
 
-                              <h3 className="font-semibold text-gray-800 text-[15px] leading-snug mb-3 uppercase tracking-wide line-clamp-2">
+                              <h3 className="font-normal text-gray-800 text-[15px] leading-snug mb-3 uppercase tracking-wide line-clamp-2">
                                 {session.title}
                               </h3>
 
