@@ -141,22 +141,22 @@ export default function Schedule() {
   useEffect(() => {
     // Generate schedule for the selected week based on the template
     const grouped: { [key: string]: any[] } = {};
-    
+
     // Iterate through 7 days starting from currentWeekStart (Monday)
     for (let i = 0; i < 7; i++) {
       const d = new Date(currentWeekStart);
       d.setDate(currentWeekStart.getDate() + i);
       const dateKey = d.toISOString().split('T')[0];
       const dayIndex = d.getDay(); // 0-6
-      
+
       // Get template classes for this day index
       const templateClasses = WEEKLY_TEMPLATE[dayIndex] || [];
-      
+
       // Map template classes to specific date/time for this week
       grouped[dateKey] = templateClasses.map(template => {
         // Construct full ISO string for start_time
         const startDateTime = `${dateKey}T${template.start_time}:00`;
-        
+
         return {
           ...template,
           start_time: startDateTime,
@@ -217,7 +217,7 @@ export default function Schedule() {
     const date = new Date(session.start_time).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
     const time = formatTime(session.start_time);
     const duration = `${session.duration_minutes} min`;
-    
+
     setSelectedClass({
       title: session.title,
       subtitle: `${date} at ${time} (${duration})`,
@@ -229,10 +229,10 @@ export default function Schedule() {
 
   return (
     <div className="pt-20 min-h-screen bg-brand-black">
-      <BookingModal 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)} 
-        bookingDetails={selectedClass} 
+      <BookingModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        bookingDetails={selectedClass}
       />
 
       <div className="bg-brand-charcoal py-12 border-b border-white/5">
@@ -244,9 +244,9 @@ export default function Schedule() {
                 Book your spot in our daily WODs and specialty classes.
               </p>
             </div>
-            
+
             <div className="flex items-center gap-4 bg-brand-black p-2 rounded-lg border border-white/10">
-              <button 
+              <button
                 onClick={() => handleWeekChange('prev')}
                 className="p-2 hover:bg-white/10 rounded-md text-white transition-colors"
               >
@@ -255,7 +255,7 @@ export default function Schedule() {
               <span className="text-white font-heading tracking-widest min-w-[140px] text-center">
                 {weekDays[0]?.month} {weekDays[0]?.dayNumber} - {weekDays[6]?.month} {weekDays[6]?.dayNumber}
               </span>
-              <button 
+              <button
                 onClick={() => handleWeekChange('next')}
                 className="p-2 hover:bg-white/10 rounded-md text-white transition-colors"
               >
@@ -295,10 +295,10 @@ export default function Schedule() {
                         }
                         groups[session.start_time].push(session);
                       });
-                      
+
                       // Sort groups by time
                       const sortedTimes = Object.keys(groups).sort();
-                      
+
                       return sortedTimes.map((time) => (
                         <div key={time} className="flex gap-2">
                           {groups[time].map((session) => (
@@ -306,37 +306,37 @@ export default function Schedule() {
                               key={session.id}
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
-                              className="flex-1 min-w-0 group relative bg-white text-brand-black p-3 rounded-lg border-l-4 border-brand-accent hover:translate-y-[-2px] transition-all duration-200 shadow-lg cursor-pointer"
+                              className="flex flex-col flex-1 min-w-0 group relative bg-white text-brand-black p-4 rounded-xl border-l-4 border-brand-accent hover:translate-y-[-2px] hover:shadow-xl transition-all duration-200 shadow-md cursor-pointer"
                               style={{ borderLeftColor: getClassColor(session.title).replace('bg-', 'var(--color-') }}
                               onClick={() => handleClassClick(session)}
                             >
-                              <div className={`absolute top-3 right-3 w-3 h-3 rounded-full ${getClassColor(session.title)}`} />
-                              
-                              <div className="flex justify-between items-end mb-2 border-b border-gray-200 pb-2">
-                                <span className="font-bold text-lg leading-none">{formatTime(session.start_time)}</span>
-                                <span className="text-xs font-mono text-gray-500">{formatDuration(session.duration_minutes)}</span>
+                              <div className={`absolute top-4 right-4 w-2.5 h-2.5 rounded-full ${getClassColor(session.title)} ring-2 ring-white`} />
+
+                              <div className="flex justify-between items-end mb-3 border-b border-gray-100 pb-2">
+                                <span className="font-bold text-xl leading-none">{formatTime(session.start_time)}</span>
+                                <span className="text-xs font-bold tracking-wider text-gray-400">{formatDuration(session.duration_minutes)}</span>
                               </div>
-                              
-                              <h3 className="font-heading font-bold text-lg leading-tight mb-1 uppercase tracking-tight truncate">
+
+                              <h3 className="font-extrabold text-[#111] text-[15px] leading-tight mb-3 uppercase tracking-wide line-clamp-2">
                                 {session.title}
                               </h3>
-                              
-                              <div className="space-y-1">
-                                <div className="flex items-center text-xs text-gray-600 font-medium truncate">
-                                  <User className="h-3 w-3 mr-1 flex-shrink-0" />
+
+                              <div className="space-y-1.5 mt-auto bg-gray-50/80 -mx-2 px-3 py-2 rounded-lg">
+                                <div className="flex items-center text-[11px] text-gray-700 font-bold tracking-wider uppercase">
+                                  <User className="h-3.5 w-3.5 mr-2 flex-shrink-0 text-brand-accent" />
                                   <span className="truncate">{session.coach}</span>
                                 </div>
-                                <div className="flex items-center text-xs text-gray-500 truncate">
-                                  <MapPin className="h-3 w-3 mr-1 flex-shrink-0" />
+                                <div className="flex items-center text-[11px] text-gray-500 font-semibold tracking-wider uppercase">
+                                  <MapPin className="h-3.5 w-3.5 mr-2 flex-shrink-0 text-brand-accent" />
                                   <span className="truncate">{session.location}</span>
                                 </div>
                               </div>
 
                               {/* Hover Overlay for Booking */}
-                              <div className="absolute inset-0 bg-brand-black/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center rounded-lg">
-                                <Button 
-                                  size="sm" 
-                                  className="bg-brand-accent text-brand-black hover:bg-white border-none font-bold text-xs px-4 whitespace-nowrap"
+                              <div className="absolute inset-0 bg-brand-black/95 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-r-xl rounded-l-sm backdrop-blur-[2px]">
+                                <Button
+                                  size="sm"
+                                  className="bg-brand-accent text-brand-black hover:bg-white border-none font-bold text-[13px] px-6 py-2.5 uppercase tracking-widest shadow-xl transform transition-transform group-hover:scale-105"
                                 >
                                   Book Now
                                 </Button>
