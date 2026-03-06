@@ -314,15 +314,15 @@ export default function Schedule() {
 
                               <div className="flex justify-between items-end mb-3 border-b border-gray-100 pb-2">
                                 <span className="font-bold text-xl leading-none">{formatTime(session.start_time)}</span>
-                                <span className="text-xs font-bold tracking-wider text-gray-400">{formatDuration(session.duration_minutes)}</span>
+                                <span className="text-xs font-bold tracking-wider text-gray-500">{formatDuration(session.duration_minutes)}</span>
                               </div>
 
-                              <h3 className="font-extrabold text-[#111] text-[15px] leading-tight mb-3 uppercase tracking-wide line-clamp-2">
+                              <h3 className="font-semibold text-gray-800 text-[15px] leading-snug mb-3 uppercase tracking-wide line-clamp-2">
                                 {session.title}
                               </h3>
 
-                              <div className="space-y-1.5 mt-auto bg-gray-50/80 -mx-2 px-3 py-2 rounded-lg">
-                                <div className="flex items-center text-[11px] text-gray-700 font-bold tracking-wider uppercase">
+                              <div className="space-y-1.5 mt-auto bg-gray-50 -mx-2 px-3 py-2 rounded-lg border border-gray-100/50">
+                                <div className="flex items-center text-[11px] text-gray-600 font-bold tracking-wider uppercase">
                                   <User className="h-3.5 w-3.5 mr-2 flex-shrink-0 text-brand-accent" />
                                   <span className="truncate">{session.coach}</span>
                                 </div>
