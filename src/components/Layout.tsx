@@ -235,7 +235,7 @@ export function Footer() {
             <span>&copy; {new Date().getFullYear()} Nyali Crossfit & Gym. All rights reserved.</span>
             <span className="hidden md:inline text-gray-700">|</span>
             <span>
-              Developed by <a href="https://www.kkdes.co.ke" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">KKDES</a>
+              Developed by <a href="https://wa.me/254724454757" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">0724454757</a>
             </span>
           </div>
         </div>
