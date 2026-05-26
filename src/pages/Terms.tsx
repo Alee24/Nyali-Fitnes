@@ -190,18 +190,18 @@ export default function Terms() {
                     <button
                       key={section.id}
                       onClick={() => handleScrollTo(section.id)}
-                      className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-left text-sm font-medium transition-all duration-200 group ${
+                      className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-left text-sm font-semibold transition-all duration-200 group border ${
                         isActive
-                          ? 'bg-brand-accent text-brand-black font-bold'
-                          : 'text-gray-400 hover:text-white hover:bg-white/5'
+                          ? 'bg-brand-accent text-brand-black font-bold border-brand-accent shadow-lg shadow-brand-accent/10'
+                          : 'text-gray-300 hover:text-white hover:bg-white/10 border-white/5 hover:border-white/10'
                       }`}
                     >
                       <Icon className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
-                        isActive ? 'text-brand-black scale-110' : 'text-gray-400 group-hover:text-brand-accent'
+                        isActive ? 'text-brand-black scale-110' : 'text-gray-300 group-hover:text-brand-accent'
                       }`} />
                       <span className="truncate">{section.title.split('. ')[1]}</span>
                       <ChevronRight className={`ml-auto h-4 w-4 transition-transform duration-200 ${
-                        isActive ? 'text-brand-black rotate-90' : 'opacity-0 group-hover:opacity-100 group-hover:translate-x-1'
+                        isActive ? 'text-brand-black rotate-90' : 'opacity-50 group-hover:opacity-100 group-hover:translate-x-1'
                       }`} />
                     </button>
                   );

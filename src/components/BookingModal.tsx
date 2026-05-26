@@ -187,6 +187,13 @@ export function BookingModal({ isOpen, onClose, bookingDetails }: BookingModalPr
                     <p className="text-red-400 text-sm text-center">{errorMsg}</p>
                   )}
 
+                  <p className="text-[11px] text-gray-400 text-center leading-relaxed my-2">
+                    By booking, you agree to our{' '}
+                    <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:underline font-bold">Terms & Conditions</a>{' '}
+                    and{' '}
+                    <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:underline font-bold">Privacy Policy</a>.
+                  </p>
+
                   {bookingDetails.type === 'Class' ? (
                     <Button type="submit" className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white border-none mt-4 font-bold rounded-none h-12">
                       Confirm Booking via WhatsApp

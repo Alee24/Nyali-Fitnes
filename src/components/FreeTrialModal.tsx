@@ -177,6 +177,13 @@ export function FreeTrialModal({ isOpen, onClose }: FreeTrialModalProps) {
                                                 <p className="text-red-400 text-sm">{errorMsg}</p>
                                             )}
 
+                                            <p className="text-[11px] text-gray-400 text-center leading-relaxed my-2">
+                                                By booking your free trial, you agree to our{' '}
+                                                <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:underline font-bold">Terms & Conditions</a>{' '}
+                                                and{' '}
+                                                <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:underline font-bold">Privacy Policy</a>.
+                                            </p>
+
                                             {/* Submit */}
                                             <Button
                                                 type="submit"
