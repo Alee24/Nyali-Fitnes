@@ -12,6 +12,8 @@ import Login from '@/pages/Login';
 import Dashboard from '@/pages/Dashboard';
 import Admin from '@/pages/Admin';
 import CrossFit from '@/pages/CrossFit';
+import Terms from '@/pages/Terms';
+import Privacy from '@/pages/Privacy';
 
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 
@@ -54,6 +56,8 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
       </main>
       {!isAppRoute && <WhatsAppButton />}

@@ -231,8 +231,12 @@ export function Footer() {
               </svg>
             </a>
           </div>
-          <div className="text-center text-xs text-gray-600 flex flex-col md:flex-row items-center gap-2">
+          <div className="text-center text-xs text-gray-600 flex flex-col md:flex-row items-center justify-center flex-wrap gap-2">
             <span>&copy; {new Date().getFullYear()} Nyali Crossfit & Gym. All rights reserved.</span>
+            <span className="hidden md:inline text-gray-700">|</span>
+            <Link to="/terms" className="hover:text-brand-accent transition-colors font-medium">Terms & Conditions</Link>
+            <span className="hidden md:inline text-gray-700">|</span>
+            <Link to="/privacy" className="hover:text-brand-accent transition-colors font-medium">Privacy Policy</Link>
             <span className="hidden md:inline text-gray-700">|</span>
             <span>
               Developed by <a href="https://wa.me/254724454757" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">0724454757</a>
