@@ -239,7 +239,7 @@ export function Footer() {
             <Link to="/privacy" className="hover:text-brand-accent transition-colors font-medium">Privacy Policy</Link>
             <span className="hidden md:inline text-gray-700">|</span>
             <span>
-              Developed by <a href="https://wa.me/254724454757" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">0724454757</a>
+              Developed by <a href="https://wa.me/254724454757" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:text-white transition-colors">KKDES</a>
             </span>
           </div>
         </div>
