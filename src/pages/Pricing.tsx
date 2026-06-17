@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from '@/components/Button';
-import { Check, Users, Bike, Dumbbell, Briefcase, Loader2, CheckCircle2 } from 'lucide-react';
+import { Check, Users, Bike, Dumbbell, Briefcase, Loader2, CheckCircle2, FileText, ExternalLink } from 'lucide-react';
 import { PRICING_DATA } from '@/lib/supabase';
+import { cn } from '@/lib/utils';
 import { ScrollReveal } from '@/components/Animations';
 import { BookingModal, BookingDetails } from '@/components/BookingModal';
 
@@ -12,6 +13,14 @@ export default function Pricing() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [corpStatus, setCorpStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [customStatus, setCustomStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+
+  const [corpStep, setCorpStep] = useState<'waiver' | 'form'>('waiver');
+  const [corpWaiverSigned, setCorpWaiverSigned] = useState(false);
+  const [corpWaiverClicked, setCorpWaiverClicked] = useState(false);
+
+  const [customStep, setCustomStep] = useState<'waiver' | 'form'>('waiver');
+  const [customWaiverSigned, setCustomWaiverSigned] = useState(false);
+  const [customWaiverClicked, setCustomWaiverClicked] = useState(false);
 
   const categories = [
     { id: 'individual', name: 'Individual', icon: Dumbbell },
@@ -182,8 +191,71 @@ export default function Pricing() {
                       <CheckCircle2 className="h-16 w-16 text-brand-accent mb-4" />
                       <h4 className="text-2xl font-heading text-white mb-2">Inquiry Sent!</h4>
                       <p className="text-gray-400 mb-6">We'll get back to you regarding your corporate membership options shortly.</p>
-                      <Button onClick={() => setCorpStatus('idle')} className="bg-brand-accent text-brand-black hover:bg-white transition-colors">
+                      <Button onClick={() => {
+                        setCorpStatus('idle');
+                        setCorpStep('waiver');
+                        setCorpWaiverSigned(false);
+                        setCorpWaiverClicked(false);
+                      }} className="bg-brand-accent text-brand-black hover:bg-white transition-colors">
                         Send Another Inquiry
+                      </Button>
+                    </div>
+                  ) : corpStep === 'waiver' ? (
+                    <div className="space-y-6 max-w-md mx-auto">
+                      <div className="bg-brand-accent/10 border border-brand-accent/20 p-4 rounded-none text-center">
+                        <FileText className="h-12 w-12 text-brand-accent mx-auto mb-2 animate-pulse" />
+                        <h4 className="text-lg font-heading text-white uppercase tracking-wider">Liability Waiver Required</h4>
+                        <p className="text-xs text-gray-400 mt-1">
+                          You must sign the waiver before sending a corporate membership inquiry.
+                        </p>
+                      </div>
+
+                      <div className="text-gray-300 text-sm space-y-3 font-light leading-relaxed text-center">
+                        <p>
+                          To request corporate pricing, please complete and sign the liability waiver.
+                        </p>
+                      </div>
+
+                      <Button
+                        onClick={() => {
+                          setCorpWaiverClicked(true);
+                          window.open("https://app.wodify.com/Token/SignWaiver?WaiverToken=591F0256C62364C653BCA8EC22AD3841074B3528B517E06DB95435D9BDE301C6", "_blank", "noopener,noreferrer");
+                        }}
+                        className="w-full bg-brand-accent hover:bg-white hover:text-brand-black text-brand-black font-bold uppercase tracking-widest py-4 flex items-center justify-center gap-2 rounded-none transition-all h-12"
+                      >
+                        <ExternalLink className="h-4 w-4" /> 1. Open & Sign Waiver
+                      </Button>
+
+                      <label className={cn(
+                        "flex items-start gap-3 p-3 border transition-colors cursor-pointer rounded-none text-left select-none",
+                        corpWaiverClicked 
+                          ? "border-white/10 hover:bg-white/5" 
+                          : "border-white/5 opacity-50 cursor-not-allowed"
+                      )}>
+                        <input
+                          type="checkbox"
+                          disabled={!corpWaiverClicked}
+                          checked={corpWaiverSigned}
+                          onChange={(e) => setCorpWaiverSigned(e.target.checked)}
+                          className="mt-1 accent-brand-accent h-4 w-4"
+                        />
+                        <div className="text-xs text-gray-300">
+                          <span className="font-bold block text-white">I have signed the waiver</span>
+                          I confirm that I have completed and submitted the waiver form on Wodify.
+                        </div>
+                      </label>
+
+                      <Button
+                        disabled={!corpWaiverSigned}
+                        onClick={() => setCorpStep('form')}
+                        className={cn(
+                          "w-full font-bold uppercase tracking-widest py-4 rounded-none transition-all h-12 flex items-center justify-center gap-2",
+                          corpWaiverSigned
+                            ? "bg-white text-brand-black hover:bg-brand-accent hover:text-brand-black"
+                            : "bg-gray-800 text-gray-500 border border-white/5 cursor-not-allowed"
+                        )}
+                      >
+                        2. Proceed to Inquiry Form
                       </Button>
                     </div>
                   ) : (
@@ -276,8 +348,71 @@ export default function Pricing() {
                   <p className="text-gray-400 max-w-lg mb-8 text-lg">
                     Thank you for your custom package request. We'll review your requirements and get back to you via email to discuss options.
                   </p>
-                  <Button onClick={() => setCustomStatus('idle')} className="bg-brand-accent text-brand-black hover:bg-white transition-colors">
+                  <Button onClick={() => {
+                    setCustomStatus('idle');
+                    setCustomStep('waiver');
+                    setCustomWaiverSigned(false);
+                    setCustomWaiverClicked(false);
+                  }} className="bg-brand-accent text-brand-black hover:bg-white transition-colors">
                     Build Another Package
+                  </Button>
+                </div>
+              ) : customStep === 'waiver' ? (
+                <div className="space-y-6 max-w-md mx-auto">
+                  <div className="bg-brand-accent/10 border border-brand-accent/20 p-4 rounded-none text-center">
+                    <FileText className="h-12 w-12 text-brand-accent mx-auto mb-2 animate-pulse" />
+                    <h4 className="text-lg font-heading text-white uppercase tracking-wider">Liability Waiver Required</h4>
+                    <p className="text-xs text-gray-400 mt-1">
+                      You must sign the waiver before building your custom package.
+                    </p>
+                  </div>
+
+                  <div className="text-gray-300 text-sm space-y-3 font-light leading-relaxed text-center">
+                    <p>
+                      To request a custom membership package, please complete and sign the liability waiver.
+                    </p>
+                  </div>
+
+                  <Button
+                    onClick={() => {
+                      setCustomWaiverClicked(true);
+                      window.open("https://app.wodify.com/Token/SignWaiver?WaiverToken=591F0256C62364C653BCA8EC22AD3841074B3528B517E06DB95435D9BDE301C6", "_blank", "noopener,noreferrer");
+                    }}
+                    className="w-full bg-brand-accent hover:bg-white hover:text-brand-black text-brand-black font-bold uppercase tracking-widest py-4 flex items-center justify-center gap-2 rounded-none transition-all h-12"
+                  >
+                    <ExternalLink className="h-4 w-4" /> 1. Open & Sign Waiver
+                  </Button>
+
+                  <label className={cn(
+                    "flex items-start gap-3 p-3 border transition-colors cursor-pointer rounded-none text-left select-none",
+                    customWaiverClicked 
+                      ? "border-white/10 hover:bg-white/5" 
+                      : "border-white/5 opacity-50 cursor-not-allowed"
+                  )}>
+                    <input
+                      type="checkbox"
+                      disabled={!customWaiverClicked}
+                      checked={customWaiverSigned}
+                      onChange={(e) => setCustomWaiverSigned(e.target.checked)}
+                      className="mt-1 accent-brand-accent h-4 w-4"
+                    />
+                    <div className="text-xs text-gray-300">
+                      <span className="font-bold block text-white">I have signed the waiver</span>
+                      I confirm that I have completed and submitted the waiver form on Wodify.
+                    </div>
+                  </label>
+
+                  <Button
+                    disabled={!customWaiverSigned}
+                    onClick={() => setCustomStep('form')}
+                    className={cn(
+                      "w-full font-bold uppercase tracking-widest py-4 rounded-none transition-all h-12 flex items-center justify-center gap-2",
+                      customWaiverSigned
+                        ? "bg-white text-brand-black hover:bg-brand-accent hover:text-brand-black"
+                        : "bg-gray-800 text-gray-500 border border-white/5 cursor-not-allowed"
+                    )}
+                  >
+                    2. Proceed to Request Form
                   </Button>
                 </div>
               ) : (
