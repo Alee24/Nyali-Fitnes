@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calendar, Clock, User, Tag, CheckCircle2, Loader2, Mail, FileText, ExternalLink } from 'lucide-react';
+import { X, Calendar, Clock, User, Tag, CheckCircle2, Loader2, Mail } from 'lucide-react';
 import { Button } from './Button';
-import { cn } from '@/lib/utils';
 
 export interface BookingDetails {
   title: string;
@@ -21,21 +20,6 @@ export function BookingModal({ isOpen, onClose, bookingDetails }: BookingModalPr
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-  
-  const [step, setStep] = useState<'waiver' | 'form'>('waiver');
-  const [waiverSigned, setWaiverSigned] = useState(false);
-  const [waiverClicked, setWaiverClicked] = useState(false);
-
-  useEffect(() => {
-    if (isOpen) {
-      setStep('waiver');
-      setWaiverSigned(false);
-      setWaiverClicked(false);
-      setStatus('idle');
-      setErrorMsg('');
-      setFormData({ name: '', email: '', phone: '' });
-    }
-  }, [isOpen]);
 
   if (!isOpen || !bookingDetails) return null;
 
@@ -44,9 +28,6 @@ export function BookingModal({ isOpen, onClose, bookingDetails }: BookingModalPr
       setStatus('idle');
       setErrorMsg('');
       setFormData({ name: '', email: '', phone: '' });
-      setStep('waiver');
-      setWaiverSigned(false);
-      setWaiverClicked(false);
       onClose();
     }
   };
@@ -137,71 +118,6 @@ export function BookingModal({ isOpen, onClose, bookingDetails }: BookingModalPr
                   className="bg-brand-accent hover:bg-white hover:text-brand-black transition-all duration-300 w-full"
                 >
                   Close
-                </Button>
-              </motion.div>
-            ) : step === 'waiver' ? (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="space-y-6"
-              >
-                <div className="bg-brand-accent/10 border border-brand-accent/20 p-4 rounded-none text-center">
-                  <FileText className="h-12 w-12 text-brand-accent mx-auto mb-2 animate-pulse" />
-                  <h3 className="text-lg font-heading text-white uppercase tracking-wider">Liability Waiver Required</h3>
-                  <p className="text-xs text-gray-400 mt-1">
-                    You must sign our waiver online before filling out the booking form.
-                  </p>
-                </div>
-
-                <div className="text-gray-300 text-sm space-y-3 font-light leading-relaxed">
-                  <p>
-                    To proceed with booking <strong className="text-white">{bookingDetails.title}</strong>, please complete and sign the digital waiver form.
-                  </p>
-                  <p className="text-xs text-gray-400">
-                    Clicking the button below will open the secure Wodify waiver signature page in a new tab.
-                  </p>
-                </div>
-
-                <Button
-                  onClick={() => {
-                    setWaiverClicked(true);
-                    window.open("https://app.wodify.com/Token/SignWaiver?WaiverToken=591F0256C62364C653BCA8EC22AD3841074B3528B517E06DB95435D9BDE301C6", "_blank", "noopener,noreferrer");
-                  }}
-                  className="w-full bg-brand-accent hover:bg-white hover:text-brand-black text-brand-black font-bold uppercase tracking-widest py-4 flex items-center justify-center gap-2 rounded-none transition-all h-12"
-                >
-                  <ExternalLink className="h-4 w-4" /> 1. Open & Sign Waiver
-                </Button>
-
-                <label className={cn(
-                  "flex items-start gap-3 p-3 border transition-colors cursor-pointer rounded-none select-none",
-                  waiverClicked 
-                    ? "border-white/10 hover:bg-white/5" 
-                    : "border-white/5 opacity-50 cursor-not-allowed"
-                )}>
-                  <input
-                    type="checkbox"
-                    disabled={!waiverClicked}
-                    checked={waiverSigned}
-                    onChange={(e) => setWaiverSigned(e.target.checked)}
-                    className="mt-1 accent-brand-accent h-4 w-4"
-                  />
-                  <div className="text-xs text-gray-300">
-                    <span className="font-bold block text-white">I have signed the waiver</span>
-                    I confirm that I have completed and submitted the waiver form on Wodify.
-                  </div>
-                </label>
-
-                <Button
-                  disabled={!waiverSigned}
-                  onClick={() => setStep('form')}
-                  className={cn(
-                    "w-full font-bold uppercase tracking-widest py-4 rounded-none transition-all h-12 flex items-center justify-center gap-2",
-                    waiverSigned
-                      ? "bg-white text-brand-black hover:bg-brand-accent hover:text-brand-black"
-                      : "bg-gray-800 text-gray-500 border border-white/5 cursor-not-allowed"
-                  )}
-                >
-                  2. Proceed to Booking
                 </Button>
               </motion.div>
             ) : (
